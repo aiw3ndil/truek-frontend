@@ -1,0 +1,13 @@
+{
+  "page": {
+    "title": "Mercado de Intercambio de Objetos",
+    "description": "Bienvenido a nuestro mercado de intercambio de objetos. Aquí puedes ofrecer un objeto a cambio de otro sin usar dinero para nada.",
+    "bazaar_alt": "Un bullicioso bazar con varias mercancías"
+  },
+  "language": {
+    "change": "Cambiar Idioma",
+    "en": "Inglés",
+    "es": "Español",
+    "fi": "Finlandés"
+  }
+}

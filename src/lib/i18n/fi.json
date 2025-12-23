@@ -1,0 +1,13 @@
+{
+  "page": {
+    "title": "Esineiden Vaihtomarkkinat",
+    "description": "Tervetuloa esineiden vaihtomarkkinoillemme. Täällä voit tarjota esinettä toista vastaan käyttämättä rahaa.",
+    "bazaar_alt": "Vilkas basaari, jossa on erilaisia tavaroita"
+  },
+  "language": {
+    "change": "Vaihda kieltä",
+    "en": "Englanti",
+    "es": "Espanja",
+    "fi": "Suomi"
+  }
+}

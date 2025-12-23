@@ -1,0 +1,13 @@
+{
+  "page": {
+    "title": "Object Exchange Market",
+    "description": "Welcome to our object exchange market. Here you can offer an item in exchange for another without using any money.",
+    "bazaar_alt": "A bustling bazaar with various goods"
+  },
+  "language": {
+    "change": "Change Language",
+    "en": "English",
+    "es": "Spanish",
+    "fi": "Finnish"
+  }
+}
