@@ -4,6 +4,7 @@ import "./globals.css";
 import "foundation-sites/dist/css/foundation.min.css";
 import FoundationInit from "./FoundationInit";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { LocaleProvider } from "@/context/LocaleContext";
 
 const geistSans = Geist({
@@ -31,9 +32,10 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <LocaleProvider>
           <Header />
-          <main className="grid-container">
+          <main className="grid-container" style={{ minHeight: '80vh' }}>
             {children}
           </main>
+          <Footer />
           <FoundationInit />
         </LocaleProvider>
       </body>

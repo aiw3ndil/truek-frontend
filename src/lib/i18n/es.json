@@ -9,5 +9,14 @@
     "en": "Inglés",
     "es": "Español",
     "fi": "Finlandés"
+  },
+  "footer": {
+    "terms": "Términos de Uso",
+    "copyright": "© 2025 Truek. Todos los derechos reservados."
+  },
+  "terms_page": {
+    "title": "Términos de Uso",
+    "heading": "Descargo de Responsabilidad",
+    "paragraph": "Truek es una plataforma para el intercambio de objetos entre usuarios. No somos parte de ninguna transacción o intercambio. No nos hacemos responsables de la calidad, seguridad, legalidad o cualquier otro aspecto de los objetos intercambiados. Todas las transacciones se realizan bajo tu propio riesgo. No nos hacemos responsables de ningún daño o pérdida, de cualquier naturaleza, que pueda derivarse de los intercambios."
   }
 }

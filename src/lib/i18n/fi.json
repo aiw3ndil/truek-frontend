@@ -9,5 +9,14 @@
     "en": "Englanti",
     "es": "Espanja",
     "fi": "Suomi"
+  },
+  "footer": {
+    "terms": "Käyttöehdot",
+    "copyright": "© 2025 Truek. Kaikki oikeudet pidätetään."
+  },
+  "terms_page": {
+    "title": "Käyttöehdot",
+    "heading": "Vastuuvapauslauseke",
+    "paragraph": "Truek on alusta käyttäjien välisten esineiden vaihtamiseen. Emme ole osapuolena missään tapahtumassa tai vaihdossa. Emme ole vastuussa vaihdettujen esineiden laadusta, turvallisuudesta, laillisuudesta tai mistään muusta näkökulmasta. Kaikki tapahtumat suoritetaan omalla vastuullasi. Emme ole vastuussa mistään vahingosta tai menetyksestä, luonteeltaan, joka voi johtua vaihdoista."
   }
 }

@@ -9,5 +9,14 @@
     "en": "English",
     "es": "Spanish",
     "fi": "Finnish"
+  },
+  "footer": {
+    "terms": "Terms of Use",
+    "copyright": "© 2025 Truek. All rights reserved."
+  },
+  "terms_page": {
+    "title": "Terms of Use",
+    "heading": "Disclaimer of Liability",
+    "paragraph": "Truek is a platform for exchanging items between users. We are not a party to any transaction or exchange. We are not responsible for the quality, safety, legality, or any other aspect of the items exchanged. All transactions are carried out at your own risk. We are not responsible for any damage or loss, of any nature, that may arise from the exchanges."
   }
 }
