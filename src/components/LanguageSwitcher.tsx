@@ -4,7 +4,7 @@ import { useLocale } from '@/context/LocaleContext';
 import { Locale } from '@/lib/i18n';
 
 export default function LanguageSwitcher() {
-  const { t, setLocale } = useLocale();
+  const { t, setLocale, locale } = useLocale();
 
   const changeLanguage = (newLocale: Locale) => {
     setLocale(newLocale);
@@ -17,7 +17,7 @@ export default function LanguageSwitcher() {
         className="button dropdown"
         data-toggle="language-dropdown"
       >
-        {t.language.change}
+        {t.language[locale]}
       </button>
       <div className="dropdown-pane" id="language-dropdown" data-dropdown>
         <a href="#" onClick={() => changeLanguage('en')}>

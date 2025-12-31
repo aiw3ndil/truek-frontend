@@ -1,11 +1,14 @@
 import LanguageSwitcher from './LanguageSwitcher';
+import Link from 'next/link';
 
 export default function Header() {
   return (
     <header className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">Truek</li>
+          <li className="menu-text">
+            <Link href="/">Truek</Link>
+          </li>
         </ul>
       </div>
       <div className="top-bar-right">
