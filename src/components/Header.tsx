@@ -1,7 +1,12 @@
+'use client';
+
 import LanguageSwitcher from './LanguageSwitcher';
 import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Header() {
+  const auth = useAuth();
+
   return (
     <header className="top-bar">
       <div className="top-bar-left">
@@ -16,6 +21,30 @@ export default function Header() {
           <li>
             <LanguageSwitcher />
           </li>
+          {auth && (
+            <>
+              {auth.isAuthenticated() ? (
+                <>
+                  <li>
+                    <Link href="/profile" className="button">
+                      {auth.user?.name || 'Profile'}
+                    </Link>
+                  </li>
+                  <li>
+                    <button onClick={auth.logout} className="button">
+                      Logout
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <Link href="/login" className="button">
+                    Login
+                  </Link>
+                </li>
+              )}
+            </>
+          )}
         </ul>
       </div>
     </header>

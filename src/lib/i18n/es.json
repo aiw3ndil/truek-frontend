@@ -10,12 +10,32 @@
     "fi": "Finlandés"
   },
   "footer": {
-    "terms": "Términos de Uso",
+    "terms": "Térmenos de Uso",
     "copyright": "© 2025 Truek. Todos los derechos reservados."
   },
   "terms_page": {
     "title": "Términos de Uso",
     "heading": "Descargo de Responsabilidad",
     "paragraph": "Truek es una plataforma para el intercambio de objetos entre usuarios. No somos parte de ninguna transacción o intercambio. No nos hacemos responsables de la calidad, seguridad, legalidad o cualquier otro aspecto de los objetos intercambiados. Todas las transacciones se realizan bajo tu propio riesgo. No nos hacemos responsables de ningún daño o pérdida, de cualquier naturaleza, que pueda derivarse de los intercambios."
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "email_label": "Correo electrónico",
+    "password_label": "Contraseña",
+    "submit_button": "Iniciar Sesión",
+    "no_account_text": "¿No tienes una cuenta?",
+    "register_link": "Regístrate",
+    "or_text": "O",
+    "google_login_button": "Iniciar Sesión con Google"
+  },
+  "register": {
+    "title": "Regístrate",
+    "username_label": "Nombre de usuario",
+    "email_label": "Correo electrónico",
+    "password_label": "Contraseña",
+    "password_confirmation_label": "Confirmar contraseña",
+    "submit_button": "Regístrate",
+    "already_have_account_text": "¿Ya tienes una cuenta?",
+    "login_link": "Iniciar Sesión"
   }
 }
