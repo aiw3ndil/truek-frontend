@@ -38,7 +38,7 @@ export default function RootLayout({
               clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
             >
               <Header />
-              <main className="grid-container" style={{ minHeight: '80vh' }}>
+              <main style={{ minHeight: '100vh', width: '100%' }}>
                 {children}
               </main>
               <Footer />
