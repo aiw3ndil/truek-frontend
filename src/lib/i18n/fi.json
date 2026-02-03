@@ -17,5 +17,25 @@
     "title": "Käyttöehdot",
     "heading": "Vastuuvapauslauseke",
     "paragraph": "Truek on alusta käyttäjien välisten esineiden vaihtamiseen. Emme ole osapuolena missään tapahtumassa tai vaihdossa. Emme ole vastuussa vaihdettujen esineiden laadusta, turvallisuudesta, laillisuudesta tai mistään muusta näkökulmasta. Kaikki tapahtumat suoritetaan omalla vastuullasi. Emme ole vastuussa mistään vahingosta tai menetyksestä, luonteeltaan, joka voi johtua vaihdoista."
+  },
+  "login": {
+    "title": "Kirjaudu sisään",
+    "email_label": "Sähköposti",
+    "password_label": "Salasana",
+    "submit_button": "Kirjaudu sisään",
+    "no_account_text": "Eikö sinulla ole tiliä?",
+    "register_link": "Rekisteröidy",
+    "or_text": "Tai",
+    "google_login_button": "Kirjaudu sisään Googlella"
+  },
+  "register": {
+    "title": "Rekisteröidy",
+    "username_label": "Käyttäjänimi",
+    "email_label": "Sähköposti",
+    "password_label": "Salasana",
+    "password_confirmation_label": "Vahvista salasana",
+    "submit_button": "Rekisteröidy",
+    "already_have_account_text": "Onko sinulla jo tili?",
+    "login_link": "Kirjaudu sisään"
   }
 }

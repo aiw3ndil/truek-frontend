@@ -40,7 +40,7 @@ export default function Header() {
                 <>
                   <li style={{ marginLeft: '1rem' }}>
                     <Link href="/profile" className="oasis-button">
-                      {auth.user?.name || 'Profile'}
+                      {auth.user?.username || 'Profile'}
                     </Link>
                   </li>
                   <li style={{ marginLeft: '0.5rem' }}>

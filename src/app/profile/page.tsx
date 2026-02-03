@@ -10,7 +10,12 @@ function ProfilePage() {
     <div className="grid-x grid-padding-x align-center">
       <div className="cell large-10 text-center">
         <h1>Welcome to your profile</h1>
-        {auth && auth.user && <p>Your token is: {auth.user.token}</p>}
+        {auth && auth.user && (
+          <div>
+            <p>Username: {auth.user.username}</p>
+            <p>Email: {auth.user.email}</p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -2,10 +2,10 @@
 
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, ComponentType } from 'react';
 
-export default function withAuth(Component) {
-  return function AuthenticatedComponent(props) {
+export default function withAuth<P extends object>(Component: ComponentType<P>) {
+  return function AuthenticatedComponent(props: P) {
     const auth = useAuth();
     const router = useRouter();
 
