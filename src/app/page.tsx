@@ -18,7 +18,7 @@ export default function Home() {
         background: '#2b1d0e',
         borderRadius: '0 0 100px 100px',
         overflow: 'hidden',
-        marginBottom: '2rem'
+        marginBottom: '1rem'
       }}>
         <div className="grid-container">
           <div className="grid-x grid-padding-x align-center">
@@ -100,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="how-it-works-section" style={{ padding: '4rem 1rem', backgroundColor: '#2b1d0e' }}>
+      <section className="how-it-works-section" style={{ padding: '0 1rem', backgroundColor: '#2b1d0e' }}>
         <div className="grid-container">
           <h2 style={{
             textAlign: 'center',
@@ -112,7 +112,7 @@ export default function Home() {
             {t.how_it_works.section_title}
           </h2>
 
-          <div className="grid-x grid-padding-x align-center" style={{ gap: '2rem' }}>
+          <div className="grid-x grid-padding-x align-center" style={{ gap: '2rem', marginBottom: '3rem' }}>
             {/* Step 1 */}
             <div className="cell large-4 medium-6 small-12">
               <div className="card-organic" style={{
@@ -219,6 +219,26 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Bazaar Image Section */}
+      <section style={{
+        width: '100%',
+        height: '300px',
+        overflow: 'hidden',
+        margin: 0,
+        padding: 0
+      }}>
+        <img
+          src="/bazaar.png"
+          alt={t.page.bazaar_alt}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block'
+          }}
+        />
       </section>
     </div>
   );
