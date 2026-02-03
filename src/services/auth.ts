@@ -1,6 +1,10 @@
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1';
 
-export async function login(email, password) {
+interface AuthResponse {
+  token: string;
+}
+
+export async function login(email: string, password: string): Promise<AuthResponse> {
   const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: {
@@ -17,7 +21,7 @@ export async function login(email, password) {
   return response.json();
 }
 
-export async function register(username, email, password) {
+export async function register(username: string, email: string, password: string): Promise<AuthResponse> {
   const response = await fetch(`${API_URL}/auth/signup`, {
     method: 'POST',
     headers: {
@@ -34,7 +38,7 @@ export async function register(username, email, password) {
   return response.json();
 }
 
-export async function loginWithGoogle(token) {
+export async function loginWithGoogle(token: string): Promise<AuthResponse> {
   const response = await fetch(`${API_URL}/auth/google`, {
     method: 'POST',
     headers: {

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { API_URL } from '@/services/auth';
+import { API_URL, register as registerService } from '@/services/auth';
 
 interface User {
   id: string;
@@ -14,6 +14,7 @@ interface AuthContextType {
   user: User | null;
   login: (token: string) => void;
   logout: () => void;
+  register: (username: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
   isAuthenticated: () => boolean;
 }
 
@@ -65,12 +66,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
     router.push('/login');
   };
 
+  const register = async (username: string, email: string, password: string, passwordConfirmation: string) => {
+    try {
+      const data = await registerService(username, email, password);
+      localStorage.setItem('token', data.token);
+      await fetchMe();
+      router.push('/');
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const isAuthenticated = () => {
     return !!user;
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
