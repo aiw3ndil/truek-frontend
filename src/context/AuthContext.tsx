@@ -1,13 +1,30 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { API_URL } from '@/services/auth';
 
-const AuthContext = createContext(null);
+interface User {
+  id: string;
+  username: string;
+  email: string;
+}
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+interface AuthContextType {
+  user: User | null;
+  login: (token: string) => void;
+  logout: () => void;
+  isAuthenticated: () => boolean;
+}
+
+const AuthContext = createContext<AuthContextType | null>(null);
+
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export function AuthProvider({ children }: AuthProviderProps) {
+  const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
   const fetchMe = async () => {
@@ -37,7 +54,7 @@ export function AuthProvider({ children }) {
     fetchMe();
   }, []);
 
-  const login = (token) => {
+  const login = (token: string) => {
     localStorage.setItem('token', token);
     fetchMe();
   };
