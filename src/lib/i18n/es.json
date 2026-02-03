@@ -37,5 +37,14 @@
     "submit_button": "Regístrate",
     "already_have_account_text": "¿Ya tienes una cuenta?",
     "login_link": "Iniciar Sesión"
+  },
+  "how_it_works": {
+    "section_title": "Cómo Funciona",
+    "step1_title": "Sube tu Objeto",
+    "step1_description": "Publica los objetos que quieres intercambiar. Añade fotos, descripciones y lo que buscas a cambio.",
+    "step2_title": "Encuentra un Match",
+    "step2_description": "Navega por los objetos o busca usuarios que ofrezcan lo que necesitas. Conecta con personas que tienen lo que buscas.",
+    "step3_title": "Realiza el Intercambio",
+    "step3_description": "Coordina con otros usuarios para completar el intercambio. Intercambia objetos sin usar dinero."
   }
 }

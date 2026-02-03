@@ -37,5 +37,14 @@
     "submit_button": "Register",
     "already_have_account_text": "Already have an account?",
     "login_link": "Login"
+  },
+  "how_it_works": {
+    "section_title": "How It Works",
+    "step1_title": "Upload Your Item",
+    "step1_description": "Post the items you want to exchange. Add photos, descriptions, and what you're looking for in return.",
+    "step2_title": "Find a Match",
+    "step2_description": "Browse items or search for users offering what you need. Connect with people who have what you're looking for.",
+    "step3_title": "Make the Exchange",
+    "step3_description": "Coordinate with other users to complete the exchange. Trade items without using money."
   }
 }

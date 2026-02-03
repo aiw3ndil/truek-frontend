@@ -99,18 +99,127 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Main Image Banner */}
-      <div className="grid-container" style={{ padding: '0 1rem 0' }}>
-        <div className="cell large-12">
-          <div className="rounded-organic desert-gradient" style={{ padding: '8px', overflow: 'hidden', boxShadow: '0 40px 80px -15px rgba(0, 0, 0, 0.8)' }}>
-            <img
-              src="/bazaar.png"
-              alt={t.page.bazaar_alt}
-              style={{ width: '100%', height: 'auto', borderRadius: 'inherit', display: 'block' }}
-            />
+      {/* How It Works Section */}
+      <section className="how-it-works-section" style={{ padding: '4rem 1rem', backgroundColor: '#2b1d0e' }}>
+        <div className="grid-container">
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: '3rem',
+            marginBottom: '4rem',
+            color: 'var(--color-sand)',
+            fontWeight: 'bold'
+          }}>
+            {t.how_it_works.section_title}
+          </h2>
+
+          <div className="grid-x grid-padding-x align-center" style={{ gap: '2rem' }}>
+            {/* Step 1 */}
+            <div className="cell large-4 medium-6 small-12">
+              <div className="card-organic" style={{
+                textAlign: 'center',
+                padding: '3rem 2rem',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }}>
+                <div style={{
+                  fontSize: '5rem',
+                  marginBottom: '1.5rem',
+                  filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))'
+                }}>
+                  📤
+                </div>
+                <h3 style={{
+                  fontSize: '1.8rem',
+                  marginBottom: '1rem',
+                  color: 'var(--color-terracotta)',
+                  fontWeight: 'bold'
+                }}>
+                  {t.how_it_works.step1_title}
+                </h3>
+                <p style={{
+                  fontSize: '1.1rem',
+                  color: 'var(--color-clay)',
+                  lineHeight: '1.6'
+                }}>
+                  {t.how_it_works.step1_description}
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="cell large-4 medium-6 small-12">
+              <div className="card-organic" style={{
+                textAlign: 'center',
+                padding: '3rem 2rem',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }}>
+                <div style={{
+                  fontSize: '5rem',
+                  marginBottom: '1.5rem',
+                  filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))'
+                }}>
+                  🔍
+                </div>
+                <h3 style={{
+                  fontSize: '1.8rem',
+                  marginBottom: '1rem',
+                  color: 'var(--color-terracotta)',
+                  fontWeight: 'bold'
+                }}>
+                  {t.how_it_works.step2_title}
+                </h3>
+                <p style={{
+                  fontSize: '1.1rem',
+                  color: 'var(--color-clay)',
+                  lineHeight: '1.6'
+                }}>
+                  {t.how_it_works.step2_description}
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="cell large-4 medium-6 small-12">
+              <div className="card-organic" style={{
+                textAlign: 'center',
+                padding: '3rem 2rem',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }}>
+                <div style={{
+                  fontSize: '5rem',
+                  marginBottom: '1.5rem',
+                  filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))'
+                }}>
+                  🤝
+                </div>
+                <h3 style={{
+                  fontSize: '1.8rem',
+                  marginBottom: '1rem',
+                  color: 'var(--color-terracotta)',
+                  fontWeight: 'bold'
+                }}>
+                  {t.how_it_works.step3_title}
+                </h3>
+                <p style={{
+                  fontSize: '1.1rem',
+                  color: 'var(--color-clay)',
+                  lineHeight: '1.6'
+                }}>
+                  {t.how_it_works.step3_description}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

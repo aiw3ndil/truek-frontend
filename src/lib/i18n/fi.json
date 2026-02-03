@@ -37,5 +37,14 @@
     "submit_button": "Rekisteröidy",
     "already_have_account_text": "Onko sinulla jo tili?",
     "login_link": "Kirjaudu sisään"
+  },
+  "how_it_works": {
+    "section_title": "Kuinka Se Toimii",
+    "step1_title": "Lataa Esineesi",
+    "step1_description": "Julkaise esineet, jotka haluat vaihtaa. Lisää kuvia, kuvauksia ja mitä etsit vastineeksi.",
+    "step2_title": "Löydä Vastaavuus",
+    "step2_description": "Selaa esineitä tai etsi käyttäjiä, jotka tarjoavat tarvitsemaasi. Yhdistä ihmisiin, joilla on etsimäsi.",
+    "step3_title": "Tee Vaihto",
+    "step3_description": "Koordinoi muiden käyttäjien kanssa vaihdon suorittamiseksi. Vaihda esineitä käyttämättä rahaa."
   }
 }
