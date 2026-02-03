@@ -21,10 +21,12 @@ export default function LoginPage() {
     setError('');
     try {
       const data = await login(email, password);
-      auth.login(data.token);
-      router.push('/');
+      if (auth) {
+        auth.login(data.token);
+        router.push('/');
+      }
     } catch (error) {
-      setError(error.message);
+      setError((error as Error).message || 'An error occurred');
     }
   };
 
@@ -32,10 +34,12 @@ export default function LoginPage() {
     onSuccess: async (tokenResponse) => {
       try {
         const data = await loginWithGoogle(tokenResponse.access_token);
-        auth.login(data.token);
-        router.push('/');
+        if (auth) {
+          auth.login(data.token);
+          router.push('/');
+        }
       } catch (error) {
-        setError(error.message);
+        setError((error as Error).message || 'An error occurred');
       }
     },
     onError: (error) => {
