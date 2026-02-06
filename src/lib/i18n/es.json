@@ -55,6 +55,7 @@
     "item_description_label": "Descripción",
     "item_image_label": "Imagen",
     "create_submit_button": "Crear Artículo",
+    "edit_button": "Editar",
     "delete_button": "Eliminar",
     "confirm_delete": "¿Estás seguro de que deseas eliminar este artículo?",
     "loading": "Cargando..."

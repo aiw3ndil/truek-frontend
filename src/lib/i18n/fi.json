@@ -55,6 +55,7 @@
     "item_description_label": "Kuvaus",
     "item_image_label": "Kuva",
     "create_submit_button": "Luo Kohde",
+    "edit_button": "Muokkaa",
     "delete_button": "Poista",
     "confirm_delete": "Haluatko varmasti poistaa tämän kohteen?",
     "loading": "Ladataan..."

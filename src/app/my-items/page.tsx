@@ -5,7 +5,7 @@ import Link from 'next/link';
 import withAuth from '@/components/withAuth';
 import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
-import { fetchItems, Item } from '@/services/items';
+import { fetchItems, deleteItem, Item } from '@/services/items';
 
 function MyItemsPage() {
     const auth = useAuth();
@@ -13,6 +13,17 @@ function MyItemsPage() {
     const [items, setItems] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    const handleDelete = async (itemId: number) => {
+        if (!confirm(t.items?.confirm_delete || "Are you sure?")) return;
+
+        try {
+            await deleteItem(localStorage.getItem('token') || '', itemId);
+            setItems(prev => prev.filter(i => i.id !== itemId));
+        } catch (err: any) {
+            alert(err.message || 'Failed to delete item');
+        }
+    };
 
     useEffect(() => {
         async function loadItems() {
@@ -85,9 +96,17 @@ function MyItemsPage() {
                                         </div>
                                         <h3 style={{ fontSize: '1.2rem', color: 'var(--color-clay)', marginBottom: '0.5rem' }}>{item.title}</h3>
                                         <p style={{ color: '#666', flex: 1 }}>{item.description.substring(0, 100)}{item.description.length > 100 ? '...' : ''}</p>
-                                        <div style={{ marginTop: '1rem' }}>
-                                            {/* Add Edit/Delete buttons here if requested, for now just viewing */}
-                                            <span className="label secondary" style={{ borderRadius: '4px', background: 'var(--color-sand)', color: 'var(--color-clay)' }}>{item.status}</span>
+                                        <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
+                                            <Link href={`/items/${item.id}/edit`} className="button small expanded secondary" style={{ margin: 0, fontWeight: '600' }}>
+                                                {t.items?.edit_button || "Edit"}
+                                            </Link>
+                                            <button
+                                                onClick={() => handleDelete(item.id)}
+                                                className="button small expanded alert"
+                                                style={{ margin: 0, fontWeight: '600', backgroundColor: '#cc4b37' }}
+                                            >
+                                                {t.items?.delete_button || "Delete"}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
