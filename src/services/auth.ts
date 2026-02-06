@@ -54,3 +54,32 @@ export async function loginWithGoogle(token: string): Promise<AuthResponse> {
 
   return response.json();
 }
+
+export async function updateProfile(token: string, name: string, picture: File | string): Promise<any> {
+  const formData = new FormData();
+  formData.append('name', name);
+
+  if (picture instanceof File) {
+    formData.append('picture', picture);
+  }
+  // If picture is a string (URL), we don't send it as 'picture' param usually implies a file upload
+  // or the backend handles it differently. Assuming backend expects file for 'picture'.
+  // If you need to clear the picture or send a URL, adjust backend expectations.
+  // For this implementation, we only append if it's a File (new upload).
+
+  const response = await fetch(`${API_URL}/users/me`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${token}`
+      // Content-Type is NOT set for FormData, browser does it with boundary
+    },
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error || 'Failed to update profile');
+  }
+
+  return response.json();
+}

@@ -38,6 +38,24 @@
     "already_have_account_text": "Onko sinulla jo tili?",
     "login_link": "Kirjaudu sisään"
   },
+  "header_menu": {
+    "my_trade": "Vaihtokauppani",
+    "create_item": "Luo Kohde",
+    "my_items": "Kohteeni",
+    "profile": "Profiili",
+    "logout": "Kirjaudu Ulos",
+    "login": "Kirjaudu Sisään"
+  },
+  "profile": {
+    "title": "Profiilisi",
+    "name_label": "Nimi",
+    "picture_label": "Profiilikuva",
+    "upload_button": "Lataa Uusi Kuva",
+    "save_button": "Päivitä Profiili",
+    "saving": "Päivitetään...",
+    "success_message": "Profiili päivitetty onnistuneesti!",
+    "no_file_chosen": "Ei tiedostoa valittu"
+  },
   "how_it_works": {
     "section_title": "Kuinka Se Toimii",
     "step1_title": "Lataa Esineesi",

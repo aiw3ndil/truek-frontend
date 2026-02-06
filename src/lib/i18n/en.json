@@ -38,6 +38,24 @@
     "already_have_account_text": "Already have an account?",
     "login_link": "Login"
   },
+  "header_menu": {
+    "my_trade": "My Trade",
+    "create_item": "Create Item",
+    "my_items": "My Items",
+    "profile": "Profile",
+    "logout": "Logout",
+    "login": "Login"
+  },
+  "profile": {
+    "title": "Your Profile",
+    "name_label": "Name",
+    "picture_label": "Profile Picture",
+    "upload_button": "Upload New Picture",
+    "save_button": "Update Profile",
+    "saving": "Updating...",
+    "success_message": "Profile updated successfully!",
+    "no_file_chosen": "No file chosen"
+  },
   "how_it_works": {
     "section_title": "How It Works",
     "step1_title": "Upload Your Item",

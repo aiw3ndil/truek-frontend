@@ -38,6 +38,24 @@
     "already_have_account_text": "¿Ya tienes una cuenta?",
     "login_link": "Iniciar Sesión"
   },
+  "header_menu": {
+    "my_trade": "Mi Intercambio",
+    "create_item": "Crear Artículo",
+    "my_items": "Mis Artículos",
+    "profile": "Perfil",
+    "logout": "Cerrar Sesión",
+    "login": "Iniciar Sesión"
+  },
+  "profile": {
+    "title": "Tu Perfil",
+    "name_label": "Nombre",
+    "picture_label": "Foto de Perfil",
+    "upload_button": "Subir Nueva Foto",
+    "save_button": "Actualizar Perfil",
+    "saving": "Actualizando...",
+    "success_message": "¡Perfil actualizado con éxito!",
+    "no_file_chosen": "Ningún archivo elegido"
+  },
   "how_it_works": {
     "section_title": "Cómo Funciona",
     "step1_title": "Sube tu Objeto",

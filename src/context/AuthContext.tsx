@@ -2,12 +2,14 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { API_URL, register as registerService } from '@/services/auth';
+import { API_URL, register as registerService, updateProfile } from '@/services/auth';
 
 interface User {
   id: string;
   username: string;
   email: string;
+  name?: string;
+  picture?: string;
 }
 
 interface AuthContextType {
@@ -16,6 +18,7 @@ interface AuthContextType {
   logout: () => void;
   register: (username: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
   isAuthenticated: () => boolean;
+  updateUserProfile: (name: string, picture: File | string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -77,12 +80,24 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
+  const updateUserProfile = async (name: string, picture: File | string) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        await updateProfile(token, name, picture);
+        await fetchMe();
+      } catch (error) {
+        throw error;
+      }
+    }
+  };
+
   const isAuthenticated = () => {
     return !!user;
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated, updateUserProfile }}>
       {children}
     </AuthContext.Provider>
   );
