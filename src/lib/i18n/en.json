@@ -58,7 +58,13 @@
     "edit_button": "Edit",
     "delete_button": "Delete",
     "confirm_delete": "Are you sure you want to delete this item?",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "edit_item_title": "Edit Item",
+    "update_item_button": "Update Item",
+    "current_images": "Current Images:",
+    "add_new_images": "Add New Images",
+    "no_images": "No images",
+    "saving": "Saving..."
   },
   "profile": {
     "title": "Your Profile",

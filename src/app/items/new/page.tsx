@@ -146,7 +146,7 @@ function CreateItemPage() {
                                 </div>
                                 <div className="cell text-center" style={{ marginTop: '2rem' }}>
                                     <button type="submit" className="oasis-button" disabled={isLoading}>
-                                        {isLoading ? (t.items?.loading || "Loading...") : (t.items?.create_submit_button || "Create Item")}
+                                        {isLoading ? (t.items?.saving || "Saving...") : (t.items?.create_submit_button || "Create Item")}
                                     </button>
                                 </div>
                             </div>

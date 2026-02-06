@@ -58,7 +58,13 @@
     "edit_button": "Muokkaa",
     "delete_button": "Poista",
     "confirm_delete": "Haluatko varmasti poistaa tämän kohteen?",
-    "loading": "Ladataan..."
+    "loading": "Ladataan...",
+    "edit_item_title": "Muokkaa Kohdetta",
+    "update_item_button": "Päivitä Kohde",
+    "current_images": "Nykyiset Kuvat:",
+    "add_new_images": "Lisää Uusia Kuvia",
+    "no_images": "Ei kuvia",
+    "saving": "Tallennetaan..."
   },
   "profile": {
     "title": "Profiilisi",

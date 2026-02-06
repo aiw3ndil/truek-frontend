@@ -95,7 +95,7 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
             <div className="grid-x grid-margin-x align-center">
                 <div className="cell medium-8 large-6">
                     <div className="card-organic">
-                        <h2 className="text-center mb-2" style={{ color: 'var(--color-clay)', marginBottom: '1.5rem' }}>Edit Item</h2>
+                        <h2 className="text-center mb-2" style={{ color: 'var(--color-clay)', marginBottom: '1.5rem' }}>{t.items?.edit_item_title || "Edit Item"}</h2>
 
                         {message && (
                             <div className={`callout ${message.type === 'success' ? 'success' : 'alert'}`} style={{ borderRadius: '12px', border: 'none', background: message.type === 'success' ? 'rgba(72, 192, 178, 0.2)' : 'rgba(188, 108, 37, 0.2)', color: 'var(--color-clay)' }}>
@@ -132,18 +132,18 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
                                     </label>
                                 </div>
                                 <div className="cell">
-                                    <p style={{ fontWeight: '600', color: 'var(--color-clay)' }}>Current Images:</p>
+                                    <p style={{ fontWeight: '600', color: 'var(--color-clay)' }}>{t.items?.current_images || "Current Images:"}</p>
                                     {currentItem?.images && currentItem.images.length > 0 ? (
                                         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                                             {currentItem.images.map(img => (
                                                 <img key={img.id} src={img.url || '/placeholder-image.jpg'} alt="Item" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px' }} />
                                             ))}
                                         </div>
-                                    ) : <p style={{ fontStyle: 'italic', color: '#888' }}>No images</p>}
+                                    ) : <p style={{ fontStyle: 'italic', color: '#888' }}>{t.items?.no_images || "No images"}</p>}
                                 </div>
                                 <div className="cell">
                                     <label style={{ color: 'var(--color-clay)', fontWeight: '600', marginBottom: '0.5rem', display: 'block' }}>
-                                        Add New Images
+                                        {t.items?.add_new_images || "Add New Images"}
                                     </label>
 
                                     <div className="grid-x grid-margin-x">
@@ -188,7 +188,7 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
                                 </div>
                                 <div className="cell text-center" style={{ marginTop: '2rem' }}>
                                     <button type="submit" className="oasis-button" disabled={isSaving}>
-                                        {isSaving ? (t.items?.loading || "Saving...") : "Update Item"}
+                                        {isSaving ? (t.items?.saving || "Saving...") : (t.items?.update_item_button || "Update Item")}
                                     </button>
                                 </div>
                             </div>

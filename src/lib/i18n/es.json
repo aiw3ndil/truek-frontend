@@ -58,7 +58,13 @@
     "edit_button": "Editar",
     "delete_button": "Eliminar",
     "confirm_delete": "¿Estás seguro de que deseas eliminar este artículo?",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "edit_item_title": "Editar Artículo",
+    "update_item_button": "Actualizar Artículo",
+    "current_images": "Imágenes Actuales:",
+    "add_new_images": "Añadir Nuevas Imágenes",
+    "no_images": "Sin imágenes",
+    "saving": "Guardando..."
   },
   "profile": {
     "title": "Tu Perfil",
