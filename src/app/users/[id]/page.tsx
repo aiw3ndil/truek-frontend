@@ -7,13 +7,17 @@ import { fetchUserById, UserSearchResult } from '@/services/users';
 import { useLocale } from '@/context/LocaleContext';
 import ImageSlider from '@/components/ImageSlider';
 import Link from 'next/link';
+import TradeModal from '@/components/TradeModal';
+import { useAuth } from '@/context/AuthContext';
 
 export default function UserInventoryPage() {
     const { id } = useParams();
     const { t } = useLocale();
+    const { user: authUser } = useAuth() || {};
     const [user, setUser] = useState<UserSearchResult | null>(null);
     const [items, setItems] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [tradeModalItem, setTradeModalItem] = useState<Item | null>(null);
 
     useEffect(() => {
         async function loadInventory() {
@@ -129,7 +133,16 @@ export default function UserInventoryPage() {
                                             {item.description.length > 120 ? `${item.description.substring(0, 120)}...` : item.description}
                                         </p>
                                         <div style={{ marginTop: '1.5rem', textAlign: 'right' }}>
-                                            <button className="oasis-button" style={{ padding: '0.7rem 2rem' }}>
+                                            <button
+                                                className="oasis-button"
+                                                style={{ padding: '0.7rem 2rem', opacity: (authUser?.id?.toString() === user?.id?.toString()) ? 0.5 : 1 }}
+                                                onClick={() => {
+                                                    if (authUser?.id?.toString() !== user?.id?.toString()) {
+                                                        setTradeModalItem(item);
+                                                    }
+                                                }}
+                                                disabled={authUser?.id?.toString() === user?.id?.toString()}
+                                            >
                                                 {t.items?.trade_button || "Trade"}
                                             </button>
                                         </div>
@@ -146,6 +159,17 @@ export default function UserInventoryPage() {
                     </div>
                 </div>
             </section>
+
+            {tradeModalItem && (
+                <TradeModal
+                    receiverItem={tradeModalItem}
+                    onClose={() => setTradeModalItem(null)}
+                    onSuccess={() => {
+                        setTradeModalItem(null);
+                        alert((t as any).trades?.proposal_success || "Proposal sent to the winds!");
+                    }}
+                />
+            )}
 
             {/* Bazaar Image Section */}
             <section style={{

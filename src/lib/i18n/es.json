@@ -2,7 +2,13 @@
   "page": {
     "title": "Mercado de Intercambio de Objetos",
     "description": "Bienvenido a nuestro mercado de intercambio de objetos. Aqui puedes ofrecer un articulo a cambio de otro sin usar dinero.",
-    "bazaar_alt": "Un bazar bullicioso con varios productos"
+    "bazaar_alt": "Un bazar bullicioso con varios productos",
+    "search_objects_toggle": "Objetos activos",
+    "search_users_toggle": "Usuarios Ofreciendo/Buscando",
+    "search_objects_placeholder": "Escribe que buscas...",
+    "search_users_placeholder": "Escribe quien buscas...",
+    "search_objects_button": "Buscar Objetos",
+    "search_users_button": "Buscar Usuarios"
   },
   "language": {
     "en": "Ingles",
@@ -66,7 +72,9 @@
     "no_images": "Sin imagenes",
     "saving": "Guardando...",
     "discover_treasures_title": "Descubre Tesoros",
-    "trade_button": "Trueque"
+    "trade_button": "Trueque",
+    "all_status": "Todos los Estados",
+    "cancel_button": "Cancelar"
   },
   "profile": {
     "title": "Tu Perfil",
@@ -109,5 +117,30 @@
     "sandstorm_swallowed": "Quizas se lo haya tragado una tormenta de arena...",
     "view_inventory": "Ver Inventario",
     "explorer_subtitle": "Explorador de las dunas"
+  },
+  "trades": {
+    "dashboard_title": "Mis Trueques",
+    "incoming_title": "Propuestas Recibidas",
+    "outgoing_title": "Mis Propuestas",
+    "proposer_label": "Proponente",
+    "receiver_label": "Receptor",
+    "item_to_receive": "Objeto a recibir",
+    "item_to_offer": "Objeto a ofrecer",
+    "status_pending": "Pendiente",
+    "status_accepted": "Aceptado",
+    "status_rejected": "Rechazado",
+    "status_cancelled": "Cancelado",
+    "status_completed": "Completado",
+    "action_accept": "Aceptar Trueque",
+    "action_reject": "Rechazar",
+    "action_cancel": "Cancelar Propuesta",
+    "action_complete": "Marcar como Completado",
+    "no_trades": "No hay trueques activos en este oasis todavia.",
+    "initiation_title": "Proponer un Trueque",
+    "select_your_item": "Selecciona cual de tus tesoros ofrecer:",
+    "confirm_proposal": "Enviar Propuesta",
+    "proposal_success": "¡Propuesta enviada a los vientos!",
+    "no_items_to_offer": "¡No tienes objetos disponibles para ofrecer! Crea uno primero.",
+    "trade_button": "Trueque"
   }
 }

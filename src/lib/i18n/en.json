@@ -2,7 +2,13 @@
   "page": {
     "title": "Object Exchange Market",
     "description": "Welcome to our object exchange market. Here you can offer an item in exchange for another without using any money.",
-    "bazaar_alt": "A bustling bazaar with various goods"
+    "bazaar_alt": "A bustling bazaar with various goods",
+    "search_objects_toggle": "Active Objects",
+    "search_users_toggle": "Explorers Offering/Seeking",
+    "search_objects_placeholder": "Write what you're looking for...",
+    "search_users_placeholder": "Write who you're looking for...",
+    "search_objects_button": "Search Objects",
+    "search_users_button": "Search Users"
   },
   "language": {
     "en": "English",
@@ -66,7 +72,9 @@
     "no_images": "No images",
     "saving": "Saving...",
     "discover_treasures_title": "Discover Treasures",
-    "trade_button": "Trade"
+    "trade_button": "Trade",
+    "all_status": "All Statuses",
+    "cancel_button": "Cancel"
   },
   "profile": {
     "title": "Your Profile",
@@ -109,5 +117,30 @@
     "sandstorm_swallowed": "Maybe they've been swallowed by a sandstorm...",
     "view_inventory": "View Inventory",
     "explorer_subtitle": "Explorer from the dunes"
+  },
+  "trades": {
+    "dashboard_title": "My Trades",
+    "incoming_title": "Incoming Proposals",
+    "outgoing_title": "My Proposals",
+    "proposer_label": "Proposer",
+    "receiver_label": "Receiver",
+    "item_to_receive": "Item to receive",
+    "item_to_offer": "Item to offer",
+    "status_pending": "Pending",
+    "status_accepted": "Accepted",
+    "status_rejected": "Rejected",
+    "status_cancelled": "Cancelled",
+    "status_completed": "Completed",
+    "action_accept": "Accept Trade",
+    "action_reject": "Reject",
+    "action_cancel": "Cancel Proposal",
+    "action_complete": "Mark as Completed",
+    "no_trades": "No active trades in this oasis yet.",
+    "initiation_title": "Propose a Trade",
+    "select_your_item": "Select which of your treasures to offer:",
+    "confirm_proposal": "Send Proposal",
+    "proposal_success": "Proposal sent to the winds!",
+    "no_items_to_offer": "You don't have any available items to offer! Create one first.",
+    "trade_button": "Trade"
   }
 }

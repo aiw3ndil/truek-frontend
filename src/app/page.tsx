@@ -6,14 +6,18 @@ import { useState, useEffect } from 'react';
 import { fetchItems, Item } from '@/services/items';
 import ImageSlider from '@/components/ImageSlider';
 import { useRouter } from 'next/navigation';
+import TradeModal from '@/components/TradeModal';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Home() {
   const { t } = useLocale();
   const router = useRouter();
+  const { user: authUser } = useAuth() || {};
   const [searchToggle, setSearchToggle] = useState<'objects' | 'users'>('objects');
   const [searchQuery, setSearchQuery] = useState('');
   const [items, setItems] = useState<Item[]>([]);
   const [isLoadingItems, setIsLoadingItems] = useState(true);
+  const [tradeModalItem, setTradeModalItem] = useState<Item | null>(null);
 
   useEffect(() => {
     async function getItems() {
@@ -32,12 +36,14 @@ export default function Home() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!searchQuery.trim()) return;
+
+    // Allow empty search to show all results
+    const queryParam = searchQuery.trim() ? `?query=${encodeURIComponent(searchQuery)}` : '';
 
     if (searchToggle === 'objects') {
-      router.push(`/search/items?query=${encodeURIComponent(searchQuery)}`);
+      router.push(`/search/items${queryParam}`);
     } else {
-      router.push(`/search/users?query=${encodeURIComponent(searchQuery)}`);
+      router.push(`/search/users${queryParam}`);
     }
   };
 
@@ -90,7 +96,7 @@ export default function Home() {
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    Objetos activos
+                    {t.page.search_objects_toggle || "Active Objects"}
                   </button>
                   <button
                     type="button"
@@ -107,7 +113,7 @@ export default function Home() {
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    Usuarios Ofreciendo/Buscando
+                    {t.page.search_users_toggle || "Explorers Offering/Seeking"}
                   </button>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -116,7 +122,7 @@ export default function Home() {
                     className="search-input"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder={searchToggle === 'objects' ? "Escribe qué buscas..." : "Escribe quién buscas..."}
+                    placeholder={searchToggle === 'objects' ? (t.page.search_objects_placeholder || "What are you looking for?") : (t.page.search_users_placeholder || "Who are you looking for?")}
                     style={{
                       flex: 1,
                       minWidth: '250px',
@@ -127,7 +133,7 @@ export default function Home() {
                     }}
                   />
                   <button type="submit" className="oasis-button" style={{ padding: '0 3rem', fontSize: '1.1rem' }}>
-                    {searchToggle === 'objects' ? 'Buscar Objetos' : 'Buscar Usuarios'}
+                    {searchToggle === 'objects' ? (t.page.search_objects_button || "Search Objects") : (t.page.search_users_button || "Search Users")}
                   </button>
                 </div>
               </form>
@@ -308,7 +314,17 @@ export default function Home() {
                         <span style={{ fontSize: '0.9rem', color: 'var(--color-terracotta)', fontWeight: '600' }}>
                           {item.user?.name || "Explorer"}
                         </span>
-                        <button className="oasis-button" style={{ padding: '0.5rem 1.5rem', fontSize: '0.9rem' }}>
+                        <button
+                          className="oasis-button"
+                          style={{ padding: '0.5rem 1.5rem', fontSize: '0.9rem', opacity: (authUser?.id?.toString() === (item.user?.id || item.user_id)?.toString()) ? 0.5 : 1 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (authUser?.id?.toString() !== (item.user?.id || item.user_id)?.toString()) {
+                              setTradeModalItem(item);
+                            }
+                          }}
+                          disabled={authUser?.id?.toString() === (item.user?.id || item.user_id)?.toString()}
+                        >
                           {t.items?.trade_button || "Trade"}
                         </button>
                       </div>
@@ -326,6 +342,17 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {tradeModalItem && (
+        <TradeModal
+          receiverItem={tradeModalItem}
+          onClose={() => setTradeModalItem(null)}
+          onSuccess={() => {
+            setTradeModalItem(null);
+            alert((t as any).trades?.proposal_success || "Proposal sent to the winds!");
+          }}
+        />
+      )}
 
       {/* Bazaar Image Section */}
       <section style={{

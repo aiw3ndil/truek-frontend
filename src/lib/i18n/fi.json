@@ -2,7 +2,13 @@
   "page": {
     "title": "Esineiden Vaihtotori",
     "description": "Tervetuloa esineiden vaihtotorillemme. Taalla voit tarjota esineen vastineeksi toisesta ilman rahaa.",
-    "bazaar_alt": "Vilkas basaari, jossa on erilaisia tuotteita"
+    "bazaar_alt": "Vilkas basaari, jossa on erilaisia tuotteita",
+    "search_objects_toggle": "Aktiiviset kohteet",
+    "search_users_toggle": "Löytöretkeilijät tarjoavat/etsivät",
+    "search_objects_placeholder": "Kirjoita mitä etsit...",
+    "search_users_placeholder": "Kirjoita ketä etsit...",
+    "search_objects_button": "Etsi kohteita",
+    "search_users_button": "Etsi käyttäjiä"
   },
   "language": {
     "en": "Englanti",
@@ -66,7 +72,9 @@
     "no_images": "Ei kuvia",
     "saving": "Tallennetaan...",
     "discover_treasures_title": "Loyda aarteita",
-    "trade_button": "Vaihda"
+    "trade_button": "Vaihda",
+    "all_status": "Kaikki tilat",
+    "cancel_button": "Peruuta"
   },
   "profile": {
     "title": "Profiilisi",
@@ -109,5 +117,30 @@
     "sandstorm_swallowed": "Ehkapa hiekkamyrsky on niellyt heidat...",
     "view_inventory": "Nayta inventaario",
     "explorer_subtitle": "Dyynejen seikkailija"
+  },
+  "trades": {
+    "dashboard_title": "Omat kauppani",
+    "incoming_title": "Saapuneet ehdotukset",
+    "outgoing_title": "Omat ehdotukseni",
+    "proposer_label": "Ehdottaja",
+    "receiver_label": "Vastaanottaja",
+    "item_to_receive": "Vastaanotettava kohde",
+    "item_to_offer": "Tarjottava kohde",
+    "status_pending": "Odottaa",
+    "status_accepted": "Hyvaksytty",
+    "status_rejected": "Hylatty",
+    "status_cancelled": "Peruttu",
+    "status_completed": "Valmistunut",
+    "action_accept": "Hyvaksy kauppa",
+    "action_reject": "Hylkaa",
+    "action_cancel": "Peru ehdotus",
+    "action_complete": "Merkitse valmiiksi",
+    "no_trades": "Tassa keitaassa ei ole vielä aktiivisia kauppoja.",
+    "initiation_title": "Ehdotah vaihtoa",
+    "select_your_item": "Valitse mita aarteistasi tarjoat:",
+    "confirm_proposal": "Laheta ehdotus",
+    "proposal_success": "Ehdotus lahetetty tuulten mukaan!",
+    "no_items_to_offer": "Sinulla ei ole tarjottavia kohteita! Luo ensin uusi kohde.",
+    "trade_button": "Vaihda"
   }
 }

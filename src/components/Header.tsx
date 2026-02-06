@@ -105,6 +105,9 @@ export default function Header() {
                       <Link href="/my-items" onClick={() => setIsProfileMenuOpen(false)} style={{ display: 'block', padding: '0.5rem 1rem', color: 'var(--color-clay)', fontWeight: '600', borderRadius: '8px', marginBottom: '0.2rem' }} onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.background = 'rgba(188, 108, 37, 0.1)'} onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.background = 'transparent'}>
                         {t.header_menu?.my_items || "My Items"}
                       </Link>
+                      <Link href="/trades" onClick={() => setIsProfileMenuOpen(false)} style={{ display: 'block', padding: '0.5rem 1rem', color: 'var(--color-clay)', fontWeight: '600', borderRadius: '8px', marginBottom: '0.2rem' }} onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.background = 'rgba(188, 108, 37, 0.1)'} onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.background = 'transparent'}>
+                        {(t as any).trades?.dashboard_title || "My Trades"}
+                      </Link>
                       <Link href="/profile" onClick={() => setIsProfileMenuOpen(false)} style={{ display: 'block', padding: '0.5rem 1rem', color: 'var(--color-clay)', fontWeight: '600', borderRadius: '8px', marginBottom: '0.2rem' }} onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.background = 'rgba(188, 108, 37, 0.1)'} onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.background = 'transparent'}>
                         {t.header_menu?.profile || "Profile"}
                       </Link>

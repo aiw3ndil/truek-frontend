@@ -6,13 +6,17 @@ import { fetchItems, Item } from '@/services/items';
 import { useLocale } from '@/context/LocaleContext';
 import ImageSlider from '@/components/ImageSlider';
 import Link from 'next/link';
+import TradeModal from '@/components/TradeModal';
+import { useAuth } from '@/context/AuthContext';
 
 function SearchItemsContent() {
     const { t } = useLocale();
+    const { user: authUser } = useAuth() || {};
     const searchParams = useSearchParams();
     const query = searchParams.get('query') || '';
     const [items, setItems] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [tradeModalItem, setTradeModalItem] = useState<Item | null>(null);
 
     useEffect(() => {
         async function performSearch() {
@@ -75,7 +79,16 @@ function SearchItemsContent() {
                                             <span style={{ fontSize: '0.9rem', color: 'var(--color-terracotta)', fontWeight: '600' }}>
                                                 {item.user?.name || "Explorer"}
                                             </span>
-                                            <button className="oasis-button" style={{ padding: '0.5rem 1.5rem', fontSize: '0.9rem' }}>
+                                            <button
+                                                className="oasis-button"
+                                                style={{ padding: '0.5rem 1.5rem', fontSize: '0.9rem', opacity: (authUser?.id?.toString() === (item.user?.id || item.user_id)?.toString()) ? 0.5 : 1 }}
+                                                onClick={() => {
+                                                    if (authUser?.id?.toString() !== (item.user?.id || item.user_id)?.toString()) {
+                                                        setTradeModalItem(item);
+                                                    }
+                                                }}
+                                                disabled={authUser?.id?.toString() === (item.user?.id || item.user_id)?.toString()}
+                                            >
                                                 {t.items?.trade_button || "Trade"}
                                             </button>
                                         </div>
@@ -96,6 +109,17 @@ function SearchItemsContent() {
                     </div>
                 )}
             </div>
+
+            {tradeModalItem && (
+                <TradeModal
+                    receiverItem={tradeModalItem}
+                    onClose={() => setTradeModalItem(null)}
+                    onSuccess={() => {
+                        setTradeModalItem(null);
+                        alert(t.trades?.proposal_success || "Proposal sent to the winds!");
+                    }}
+                />
+            )}
         </div>
     );
 }
