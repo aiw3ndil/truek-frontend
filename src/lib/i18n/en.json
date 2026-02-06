@@ -46,6 +46,19 @@
     "logout": "Logout",
     "login": "Login"
   },
+  "items": {
+    "my_items_title": "My Items",
+    "create_item_button": "Create New Item",
+    "no_items_message": "You haven't posted any items yet.",
+    "create_item_title": "Create New Item",
+    "item_title_label": "Title",
+    "item_description_label": "Description",
+    "item_image_label": "Image",
+    "create_submit_button": "Create Item",
+    "delete_button": "Delete",
+    "confirm_delete": "Are you sure you want to delete this item?",
+    "loading": "Loading..."
+  },
   "profile": {
     "title": "Your Profile",
     "name_label": "Name",

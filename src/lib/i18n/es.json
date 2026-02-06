@@ -46,6 +46,19 @@
     "logout": "Cerrar Sesión",
     "login": "Iniciar Sesión"
   },
+  "items": {
+    "my_items_title": "Mis Artículos",
+    "create_item_button": "Crear Nuevo Artículo",
+    "no_items_message": "Aún no has publicado ningún artículo.",
+    "create_item_title": "Crear Nuevo Artículo",
+    "item_title_label": "Título",
+    "item_description_label": "Descripción",
+    "item_image_label": "Imagen",
+    "create_submit_button": "Crear Artículo",
+    "delete_button": "Eliminar",
+    "confirm_delete": "¿Estás seguro de que deseas eliminar este artículo?",
+    "loading": "Cargando..."
+  },
   "profile": {
     "title": "Tu Perfil",
     "name_label": "Nombre",

@@ -46,6 +46,19 @@
     "logout": "Kirjaudu Ulos",
     "login": "Kirjaudu Sisään"
   },
+  "items": {
+    "my_items_title": "Kohteeni",
+    "create_item_button": "Luo Uusi Kohde",
+    "no_items_message": "Et ole vielä julkaissut yhtään kohdetta.",
+    "create_item_title": "Luo Uusi Kohde",
+    "item_title_label": "Otsikko",
+    "item_description_label": "Kuvaus",
+    "item_image_label": "Kuva",
+    "create_submit_button": "Luo Kohde",
+    "delete_button": "Poista",
+    "confirm_delete": "Haluatko varmasti poistaa tämän kohteen?",
+    "loading": "Ladataan..."
+  },
   "profile": {
     "title": "Profiilisi",
     "name_label": "Nimi",
