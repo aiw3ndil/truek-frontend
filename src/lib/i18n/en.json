@@ -11,7 +11,7 @@
   },
   "footer": {
     "terms": "Terms of Use",
-    "copyright": "© 2025 Truek. All rights reserved."
+    "copyright": "(c) 2025 Truek. All rights reserved."
   },
   "terms_page": {
     "title": "Terms of Use",
@@ -85,6 +85,28 @@
     "step2_title": "Find a Match",
     "step2_description": "Browse items or search for users offering what you need. Connect with people who have what you're looking for.",
     "step3_title": "Make the Exchange",
-    "step3_description": "Coordinate with other users to complete the exchange. Trade items without using money."
+    "step3_description": "Coordinate with other users to complete the exchange. Trade items without using money.",
+    "inventory": {
+      "title": "{name}'s Inventory",
+      "items_count": "{count} items found in this oasis",
+      "back_link": "Back to the Oasis",
+      "loading_user": "Finding explorer...",
+      "no_items": "This explorer hasn't found any treasures yet.",
+      "inventory_alt": "The inventory of a desert merchant"
+    }
+  },
+  "search": {
+    "items_title": "Results for \"{query}\"",
+    "users_title": "Explorers: \"{query}\"",
+    "items_found": "We found {count} items in the bazaar",
+    "users_found": "We found {count} adventurers in this oasis",
+    "back_to_oasis": "Back to the Oasis",
+    "searching_items": "Searching the dunes...",
+    "searching_users": "Searching for adventurers...",
+    "no_items_found": "Whoops, we haven't found anything",
+    "no_users_found": "There's no one by that name",
+    "try_others": "Try other search terms.",
+    "sandstorm_swallowed": "Maybe they've been swallowed by a sandstorm...",
+    "view_inventory": "View Inventory"
   }
 }

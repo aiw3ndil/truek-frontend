@@ -20,3 +20,21 @@ export async function fetchUsers(query?: string): Promise<UserSearchResult[]> {
     }
     return response.json();
 }
+export async function fetchUserById(id: string): Promise<UserSearchResult> {
+    try {
+        const response = await fetch(`${API_URL}/users/${id}`);
+        if (response.ok) {
+            return response.json();
+        }
+    } catch (e) {
+        console.warn(`Direct fetch for user ${id} failed, trying list fallback...`);
+    }
+
+    // Fallback: fetch all and filter
+    const users = await fetchUsers();
+    const user = users.find(u => u.id.toString() === id);
+    if (!user) {
+        throw new Error('Failed to fetch user');
+    }
+    return user;
+}

@@ -1,8 +1,8 @@
 {
   "page": {
-    "title": "Esineiden Vaihtomarkkinat",
-    "description": "Tervetuloa esineiden vaihtomarkkinoillemme. Täällä voit tarjota esinettä toista vastaan käyttämättä rahaa.",
-    "bazaar_alt": "Vilkas basaari, jossa on erilaisia tavaroita"
+    "title": "Esineiden Vaihtotori",
+    "description": "Tervetuloa esineiden vaihtotorillemme. Taalla voit tarjota esineen vastineeksi toisesta ilman rahaa.",
+    "bazaar_alt": "Vilkas basaari, jossa on erilaisia tuotteita"
   },
   "language": {
     "en": "Englanti",
@@ -10,28 +10,28 @@
     "fi": "Suomi"
   },
   "footer": {
-    "terms": "Käyttöehdot",
-    "copyright": "© 2025 Truek. Kaikki oikeudet pidätetään."
+    "terms": "Kayttoehdot",
+    "copyright": "(c) 2025 Truek. Kaikki oikeudet pidatetaan."
   },
   "terms_page": {
-    "title": "Käyttöehdot",
-    "heading": "Vastuuvapauslauseke",
-    "paragraph": "Truek on alusta käyttäjien välisten esineiden vaihtamiseen. Emme ole osapuolena missään tapahtumassa tai vaihdossa. Emme ole vastuussa vaihdettujen esineiden laadusta, turvallisuudesta, laillisuudesta tai mistään muusta näkökulmasta. Kaikki tapahtumat suoritetaan omalla vastuullasi. Emme ole vastuussa mistään vahingosta tai menetyksestä, luonteeltaan, joka voi johtua vaihdoista."
+    "title": "Kayttoehdot",
+    "heading": "Vastuunvapautuslauseke",
+    "paragraph": "Truek on alusta esineiden vaihtoon kayttajien valilla. Emme ole osapuolena missaan tapahtumassa tai vaihdossa. Emme ole vastuussa vaihdettujen esineiden laadusta, turvallisuudesta, laillisuudesta tai mistaan muusta nakokohdasta. Kaikki tapahtumat suoritetaan omalla vastuullasi. Emme ole vastuussa mistaan vahingoista tai menetyksista, jotka voivat aiheutua vaihdoista."
   },
   "login": {
     "title": "Kirjaudu sisään",
-    "email_label": "Sähköposti",
+    "email_label": "Sahkoposti",
     "password_label": "Salasana",
     "submit_button": "Kirjaudu sisään",
-    "no_account_text": "Eikö sinulla ole tiliä?",
+    "no_account_text": "Eiko sinulla ole tilia?",
     "register_link": "Rekisteröidy",
     "or_text": "Tai",
-    "google_login_button": "Kirjaudu sisään Googlella"
+    "google_login_button": "Kirjaudu Googlella"
   },
   "register": {
     "title": "Rekisteröidy",
-    "username_label": "Käyttäjänimi",
-    "email_label": "Sähköposti",
+    "username_label": "Kayttajanimi",
+    "email_label": "Sahkoposti",
     "password_label": "Salasana",
     "password_confirmation_label": "Vahvista salasana",
     "submit_button": "Rekisteröidy",
@@ -39,52 +39,74 @@
     "login_link": "Kirjaudu sisään"
   },
   "header_menu": {
-    "my_trade": "Vaihtokauppani",
-    "create_item": "Luo Kohde",
-    "my_items": "Kohteeni",
+    "my_trade": "Omat kaupat",
+    "create_item": "Luo kohde",
+    "my_items": "Omat kohteet",
     "profile": "Profiili",
-    "logout": "Kirjaudu Ulos",
-    "login": "Kirjaudu Sisään"
+    "logout": "Kirjaudu ulos",
+    "login": "Kirjaudu sisään"
   },
   "items": {
-    "my_items_title": "Kohteeni",
-    "create_item_button": "Luo Uusi Kohde",
-    "no_items_message": "Et ole vielä julkaissut yhtään kohdetta.",
-    "create_item_title": "Luo Uusi Kohde",
+    "my_items_title": "Omat kohteet",
+    "create_item_button": "Luo uusi kohde",
+    "no_items_message": "Et ole vielä lahettanyt yhtaan kohdetta.",
+    "create_item_title": "Luo uusi kohde",
     "item_title_label": "Otsikko",
     "item_description_label": "Kuvaus",
     "item_image_label": "Kuva",
-    "create_submit_button": "Luo Kohde",
+    "create_submit_button": "Luo kohde",
     "edit_button": "Muokkaa",
     "delete_button": "Poista",
-    "confirm_delete": "Haluatko varmasti poistaa tämän kohteen?",
+    "confirm_delete": "Oletko varma, että haluat poistaa tämän kohteen?",
     "loading": "Ladataan...",
-    "edit_item_title": "Muokkaa Kohdetta",
-    "update_item_button": "Päivitä Kohde",
-    "current_images": "Nykyiset Kuvat:",
-    "add_new_images": "Lisää Uusia Kuvia",
+    "edit_item_title": "Muokkaa kohdetta",
+    "update_item_button": "Paivita kohde",
+    "current_images": "Nykyiset kuvat:",
+    "add_new_images": "Lisaa uusia kuvia",
     "no_images": "Ei kuvia",
     "saving": "Tallennetaan...",
-    "discover_treasures_title": "Löydä Aarteita",
+    "discover_treasures_title": "Loyda aarteita",
     "trade_button": "Vaihda"
   },
   "profile": {
     "title": "Profiilisi",
     "name_label": "Nimi",
     "picture_label": "Profiilikuva",
-    "upload_button": "Lataa Uusi Kuva",
-    "save_button": "Päivitä Profiili",
-    "saving": "Päivitetään...",
-    "success_message": "Profiili päivitetty onnistuneesti!",
-    "no_file_chosen": "Ei tiedostoa valittu"
+    "upload_button": "Lataa uusi kuva",
+    "save_button": "Paivita profiili",
+    "saving": "Paivitetaan...",
+    "success_message": "Profiili paivitetty onnistuneesti!",
+    "no_file_chosen": "Ei tiedostoa valittuna"
   },
   "how_it_works": {
     "section_title": "Kuinka Se Toimii",
     "step1_title": "Lataa Esineesi",
-    "step1_description": "Julkaise esineet, jotka haluat vaihtaa. Lisää kuvia, kuvauksia ja mitä etsit vastineeksi.",
-    "step2_title": "Löydä Vastaavuus",
-    "step2_description": "Selaa esineitä tai etsi käyttäjiä, jotka tarjoavat tarvitsemaasi. Yhdistä ihmisiin, joilla on etsimäsi.",
+    "step1_description": "Julkaise esineet, jotka haluat vaihtaa. Lisaa kuvia, kuvauksia ja mita etsit vastineeksi.",
+    "step2_title": "Loyda Vastaavuus",
+    "step2_description": "Selaa esineita tai etsi kayttajia, jotka tarjoavat tarvitsemaasi. Yhdista ihmisiin, joilla on etsimasi.",
     "step3_title": "Tee Vaihto",
-    "step3_description": "Koordinoi muiden käyttäjien kanssa vaihdon suorittamiseksi. Vaihda esineitä käyttämättä rahaa."
+    "step3_description": "Koordinoi muiden kayttajien kanssa vaihdon suorittamiseksi. Vaihda esineita kayttamatta rahaa.",
+    "inventory": {
+      "title": "Kayttajan {name} inventaario",
+      "items_count": "{count} esinetta loytyi tasta keitaasta",
+      "back_link": "Takaisin keitaalle",
+      "loading_user": "Etsitaan seikkailijaa...",
+      "no_items": "Tama tutkimusmatkailija ei ole vielä loytanyt aarteita.",
+      "inventory_alt": "Aavikon kauppiaan inventaario"
+    }
+  },
+  "search": {
+    "items_title": "Tulokset haulle \"{query}\"",
+    "users_title": "Tutkimusmatkailijat: \"{query}\"",
+    "items_found": "Loytyi {count} esinetta basaarista",
+    "users_found": "Loytyi {count} seikkailijaa tasta keitaasta",
+    "back_to_oasis": "Takaisin keitaalle",
+    "searching_items": "Etsitaan dyyneilta...",
+    "searching_users": "Etsitaan seikkailijoita...",
+    "no_items_found": "Hups, emme loytaneet mitaan",
+    "no_users_found": "Ketaan ei loytynyt silla nimella",
+    "try_others": "Kokeile muita hakusanoja.",
+    "sandstorm_swallowed": "Ehkapa hiekkamyrsky on niellyt heidat...",
+    "view_inventory": "Nayta inventaario"
   }
 }

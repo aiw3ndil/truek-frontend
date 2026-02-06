@@ -1,72 +1,72 @@
 {
   "page": {
     "title": "Mercado de Intercambio de Objetos",
-    "description": "Bienvenido a nuestro mercado de intercambio de objetos. Aquí puedes ofrecer un objeto a cambio de otro sin usar dinero para nada.",
-    "bazaar_alt": "Un bullicioso bazar con varias mercancías"
+    "description": "Bienvenido a nuestro mercado de intercambio de objetos. Aqui puedes ofrecer un articulo a cambio de otro sin usar dinero.",
+    "bazaar_alt": "Un bazar bullicioso con varios productos"
   },
   "language": {
-    "en": "Inglés",
-    "es": "Español",
-    "fi": "Finlandés"
+    "en": "Ingles",
+    "es": "Espanol",
+    "fi": "Finlandes"
   },
   "footer": {
-    "terms": "Térmenos de Uso",
-    "copyright": "© 2025 Truek. Todos los derechos reservados."
+    "terms": "Terminos de Uso",
+    "copyright": "(c) 2025 Truek. Todos los derechos reservados."
   },
   "terms_page": {
-    "title": "Términos de Uso",
+    "title": "Terminos de Uso",
     "heading": "Descargo de Responsabilidad",
-    "paragraph": "Truek es una plataforma para el intercambio de objetos entre usuarios. No somos parte de ninguna transacción o intercambio. No nos hacemos responsables de la calidad, seguridad, legalidad o cualquier otro aspecto de los objetos intercambiados. Todas las transacciones se realizan bajo tu propio riesgo. No nos hacemos responsables de ningún daño o pérdida, de cualquier naturaleza, que pueda derivarse de los intercambios."
+    "paragraph": "Truek es una plataforma para intercambiar articulos entre usuarios. No somos parte de ninguna transaccion o intercambio. No somos responsables de la calidad, seguridad, legalidad o cualquier otro aspecto de los articulos intercambiados. Todas las transacciones se realizan bajo su propio riesgo. No somos responsables de ningun daño o perdida, de cualquier naturaleza, que pueda surgir de los intercambios."
   },
   "login": {
-    "title": "Iniciar Sesión",
-    "email_label": "Correo electrónico",
+    "title": "Iniciar Sesion",
+    "email_label": "Correo Electronico",
     "password_label": "Contraseña",
-    "submit_button": "Iniciar Sesión",
-    "no_account_text": "¿No tienes una cuenta?",
-    "register_link": "Regístrate",
+    "submit_button": "Iniciar Sesion",
+    "no_account_text": "No tienes una cuenta?",
+    "register_link": "Registrarse",
     "or_text": "O",
-    "google_login_button": "Iniciar Sesión con Google"
+    "google_login_button": "Iniciar Sesion con Google"
   },
   "register": {
-    "title": "Regístrate",
-    "username_label": "Nombre de usuario",
-    "email_label": "Correo electrónico",
+    "title": "Registrarse",
+    "username_label": "Nombre de Usuario",
+    "email_label": "Correo Electronico",
     "password_label": "Contraseña",
-    "password_confirmation_label": "Confirmar contraseña",
-    "submit_button": "Regístrate",
-    "already_have_account_text": "¿Ya tienes una cuenta?",
-    "login_link": "Iniciar Sesión"
+    "password_confirmation_label": "Confirmar Contraseña",
+    "submit_button": "Registrarse",
+    "already_have_account_text": "Ya tienes una cuenta?",
+    "login_link": "Iniciar Sesion"
   },
   "header_menu": {
-    "my_trade": "Mi Intercambio",
-    "create_item": "Crear Artículo",
-    "my_items": "Mis Artículos",
+    "my_trade": "Mi Trueque",
+    "create_item": "Crear Objeto",
+    "my_items": "Mis Objetos",
     "profile": "Perfil",
-    "logout": "Cerrar Sesión",
-    "login": "Iniciar Sesión"
+    "logout": "Cerrar Sesion",
+    "login": "Iniciar Sesion"
   },
   "items": {
-    "my_items_title": "Mis Artículos",
-    "create_item_button": "Crear Nuevo Artículo",
-    "no_items_message": "Aún no has publicado ningún artículo.",
-    "create_item_title": "Crear Nuevo Artículo",
-    "item_title_label": "Título",
-    "item_description_label": "Descripción",
+    "my_items_title": "Mis Objetos",
+    "create_item_button": "Crear Nuevo Objeto",
+    "no_items_message": "Aun no has publicado ningun objeto.",
+    "create_item_title": "Crear Nuevo Objeto",
+    "item_title_label": "Titulo",
+    "item_description_label": "Descripcion",
     "item_image_label": "Imagen",
-    "create_submit_button": "Crear Artículo",
+    "create_submit_button": "Crear Objeto",
     "edit_button": "Editar",
     "delete_button": "Eliminar",
-    "confirm_delete": "¿Estás seguro de que deseas eliminar este artículo?",
+    "confirm_delete": "Estas seguro de que quieres eliminar este objeto?",
     "loading": "Cargando...",
-    "edit_item_title": "Editar Artículo",
-    "update_item_button": "Actualizar Artículo",
-    "current_images": "Imágenes Actuales:",
-    "add_new_images": "Añadir Nuevas Imágenes",
-    "no_images": "Sin imágenes",
+    "edit_item_title": "Editar Objeto",
+    "update_item_button": "Actualizar Objeto",
+    "current_images": "Imagenes Actuales:",
+    "add_new_images": "Añadir Nuevas Imagenes",
+    "no_images": "Sin imagenes",
     "saving": "Guardando...",
-    "discover_treasures_title": "Descubrir Tesoros",
-    "trade_button": "Intercambiar"
+    "discover_treasures_title": "Descubre Tesoros",
+    "trade_button": "Trueque"
   },
   "profile": {
     "title": "Tu Perfil",
@@ -75,16 +75,38 @@
     "upload_button": "Subir Nueva Foto",
     "save_button": "Actualizar Perfil",
     "saving": "Actualizando...",
-    "success_message": "¡Perfil actualizado con éxito!",
-    "no_file_chosen": "Ningún archivo elegido"
+    "success_message": "Perfil actualizado con exito!",
+    "no_file_chosen": "Ningun archivo seleccionado"
   },
   "how_it_works": {
-    "section_title": "Cómo Funciona",
+    "section_title": "Como Funciona",
     "step1_title": "Sube tu Objeto",
     "step1_description": "Publica los objetos que quieres intercambiar. Añade fotos, descripciones y lo que buscas a cambio.",
     "step2_title": "Encuentra un Match",
     "step2_description": "Navega por los objetos o busca usuarios que ofrezcan lo que necesitas. Conecta con personas que tienen lo que buscas.",
     "step3_title": "Realiza el Intercambio",
-    "step3_description": "Coordina con otros usuarios para completar el intercambio. Intercambia objetos sin usar dinero."
+    "step3_description": "Coordina con otros usuarios para completar el intercambio. Intercambia objetos sin usar dinero.",
+    "inventory": {
+      "title": "Inventario de {name}",
+      "items_count": "Se han encontrado {count} objetos en este oasis",
+      "back_link": "Volver al Oasis",
+      "loading_user": "Buscando al aventurero...",
+      "no_items": "Este explorador aun no ha encontrado ningun tesoro.",
+      "inventory_alt": "El inventario de un mercader del desierto"
+    }
+  },
+  "search": {
+    "items_title": "Resultados para \"{query}\"",
+    "users_title": "Exploradores: \"{query}\"",
+    "items_found": "Hemos encontrado {count} objetos en el bazaar",
+    "users_found": "Hemos encontrado {count} aventureros en este oasis",
+    "back_to_oasis": "Volver al Oasis",
+    "searching_items": "Buscando en las dunas...",
+    "searching_users": "Buscando aventureros...",
+    "no_items_found": "Vaya, no hemos encontrado nada",
+    "no_users_found": "No hay nadie con ese nombre",
+    "try_others": "Prueba con otros terminos de busqueda.",
+    "sandstorm_swallowed": "Quizas se lo haya tragado una tormenta de arena...",
+    "view_inventory": "Ver Inventario"
   }
 }
