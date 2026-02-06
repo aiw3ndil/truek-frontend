@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ImageSlider from '@/components/ImageSlider';
 import withAuth from '@/components/withAuth';
 import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
@@ -83,16 +84,9 @@ function MyItemsPage() {
                                             backgroundColor: 'var(--color-sand)',
                                             marginBottom: '1rem',
                                             borderRadius: '8px',
-                                            overflow: 'hidden',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center'
+                                            overflow: 'hidden'
                                         }}>
-                                            {item.images && item.images.length > 0 ? (
-                                                <img src={item.images[0].url || '/placeholder-image.jpg'} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                            ) : (
-                                                <span style={{ color: 'var(--color-terracotta)', fontSize: '2rem' }}>📦</span>
-                                            )}
+                                            <ImageSlider images={item.images} alt={item.title} />
                                         </div>
                                         <h3 style={{ fontSize: '1.2rem', color: 'var(--color-clay)', marginBottom: '0.5rem' }}>{item.title}</h3>
                                         <p style={{ color: '#666', flex: 1 }}>{item.description.substring(0, 100)}{item.description.length > 100 ? '...' : ''}</p>
