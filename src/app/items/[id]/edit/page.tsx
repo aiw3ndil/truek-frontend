@@ -16,6 +16,7 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
     const [description, setDescription] = useState('');
     const [imageFields, setImageFields] = useState<{ id: number; file: File | null }[]>([{ id: Date.now(), file: null }]);
     const [currentItem, setCurrentItem] = useState<Item | null>(null);
+    const [imagesToDelete, setImagesToDelete] = useState<number[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
@@ -34,6 +35,14 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
         const newFields = [...imageFields];
         newFields[index].file = file;
         setImageFields(newFields);
+    };
+
+    const toggleImageDeletion = (imageId: number) => {
+        setImagesToDelete(prev =>
+            prev.includes(imageId)
+                ? prev.filter(id => id !== imageId)
+                : [...prev, imageId]
+        );
     };
 
     useEffect(() => {
@@ -75,8 +84,8 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
                 title,
                 description,
                 status: currentItem?.status || 'available',
-                images: validImages
-                // We are NOT handling image deletion in this simple UI yet, just adding new ones or updating text
+                images: validImages,
+                imagesToDelete: imagesToDelete
             });
             setMessage({ type: 'success', text: 'Item updated successfully!' });
             // Reload item data to show new image if added? or redirect?
@@ -134,10 +143,66 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
                                 <div className="cell">
                                     <p style={{ fontWeight: '600', color: 'var(--color-clay)' }}>{t.items?.current_images || "Current Images:"}</p>
                                     {currentItem?.images && currentItem.images.length > 0 ? (
-                                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                                            {currentItem.images.map(img => (
-                                                <img key={img.id} src={img.url || '/placeholder-image.jpg'} alt="Item" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px' }} />
-                                            ))}
+                                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                                            {currentItem.images.map(img => {
+                                                const isMarkedForDeletion = imagesToDelete.includes(img.id);
+                                                return (
+                                                    <div key={img.id} style={{ position: 'relative', width: '80px', height: '80px' }}>
+                                                        <img
+                                                            src={img.url || '/placeholder-image.jpg'}
+                                                            alt="Item"
+                                                            style={{
+                                                                width: '100%',
+                                                                height: '100%',
+                                                                objectFit: 'cover',
+                                                                borderRadius: '8px',
+                                                                opacity: isMarkedForDeletion ? 0.3 : 1,
+                                                                filter: isMarkedForDeletion ? 'grayscale(100%)' : 'none',
+                                                                transition: 'all 0.3s ease'
+                                                            }}
+                                                        />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => toggleImageDeletion(img.id)}
+                                                            style={{
+                                                                position: 'absolute',
+                                                                top: '-5px',
+                                                                right: '-5px',
+                                                                background: isMarkedForDeletion ? 'var(--color-clay)' : 'var(--color-terracotta)',
+                                                                color: '#fff',
+                                                                border: 'none',
+                                                                borderRadius: '50%',
+                                                                width: '24px',
+                                                                height: '24px',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                justifyContent: 'center',
+                                                                cursor: 'pointer',
+                                                                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                                                                zIndex: 1
+                                                            }}
+                                                            title={isMarkedForDeletion ? "Restore Image" : "Delete Image"}
+                                                        >
+                                                            {isMarkedForDeletion ? '↺' : '×'}
+                                                        </button>
+                                                        {isMarkedForDeletion && (
+                                                            <div style={{
+                                                                position: 'absolute',
+                                                                inset: 0,
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                justifyContent: 'center',
+                                                                pointerEvents: 'none',
+                                                                color: 'var(--color-terracotta)',
+                                                                fontSize: '1.5rem',
+                                                                fontWeight: 'bold'
+                                                            }}>
+                                                                /
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
                                     ) : <p style={{ fontStyle: 'italic', color: '#888' }}>{t.items?.no_images || "No images"}</p>}
                                 </div>
