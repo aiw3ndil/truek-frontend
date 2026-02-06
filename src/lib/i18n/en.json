@@ -107,6 +107,7 @@
     "no_users_found": "There's no one by that name",
     "try_others": "Try other search terms.",
     "sandstorm_swallowed": "Maybe they've been swallowed by a sandstorm...",
-    "view_inventory": "View Inventory"
+    "view_inventory": "View Inventory",
+    "explorer_subtitle": "Explorer from the dunes"
   }
 }

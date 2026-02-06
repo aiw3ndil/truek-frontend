@@ -36,7 +36,7 @@ export default function UserInventoryPage() {
     }, [id]);
 
     if (isLoading) {
-        const inv = (t as any).inventory;
+        const inv = (t as any).how_it_works?.inventory;
         return (
             <div className="search-results-page" style={{ backgroundColor: '#FDF8ED', minHeight: '100vh', padding: '4rem 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div className="text-center">
@@ -63,7 +63,7 @@ export default function UserInventoryPage() {
         );
     }
 
-    const inv = (t as any).inventory;
+    const inv = (t as any).how_it_works?.inventory;
 
     return (
         <div className="inventory-page" style={{ backgroundColor: '#FDF8ED', minHeight: '100vh' }}>
@@ -139,7 +139,7 @@ export default function UserInventoryPage() {
                         ) : (
                             <div className="cell text-center" style={{ padding: '4rem 0', width: '100%' }}>
                                 <p style={{ fontSize: '1.2rem', color: 'var(--color-clay)', fontStyle: 'italic' }}>
-                                    {inv?.no_items || "Este explorador aún no ha encontrado tesoros."}
+                                    {inv?.no_items || "This explorer hasn't found any treasures yet."}
                                 </p>
                             </div>
                         )}
