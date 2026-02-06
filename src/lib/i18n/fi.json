@@ -64,7 +64,9 @@
     "current_images": "Nykyiset Kuvat:",
     "add_new_images": "Lisää Uusia Kuvia",
     "no_images": "Ei kuvia",
-    "saving": "Tallennetaan..."
+    "saving": "Tallennetaan...",
+    "discover_treasures_title": "Löydä Aarteita",
+    "trade_button": "Vaihda"
   },
   "profile": {
     "title": "Profiilisi",

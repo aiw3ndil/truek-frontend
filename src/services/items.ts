@@ -21,10 +21,13 @@ export interface Item {
     images: ItemImage[];
 }
 
-export async function fetchItems(userId?: number | string): Promise<Item[]> {
+export async function fetchItems(userId?: number | string, query?: string): Promise<Item[]> {
     const url = new URL(`${API_URL}/items`);
     if (userId) {
         url.searchParams.append('user_id', userId.toString());
+    }
+    if (query) {
+        url.searchParams.append('query', query);
     }
 
     const response = await fetch(url.toString());

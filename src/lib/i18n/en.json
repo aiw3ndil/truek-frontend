@@ -64,7 +64,9 @@
     "current_images": "Current Images:",
     "add_new_images": "Add New Images",
     "no_images": "No images",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "discover_treasures_title": "Discover Treasures",
+    "trade_button": "Trade"
   },
   "profile": {
     "title": "Your Profile",

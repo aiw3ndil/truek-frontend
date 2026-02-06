@@ -64,7 +64,9 @@
     "current_images": "Imágenes Actuales:",
     "add_new_images": "Añadir Nuevas Imágenes",
     "no_images": "Sin imágenes",
-    "saving": "Guardando..."
+    "saving": "Guardando...",
+    "discover_treasures_title": "Descubrir Tesoros",
+    "trade_button": "Intercambiar"
   },
   "profile": {
     "title": "Tu Perfil",

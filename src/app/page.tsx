@@ -2,11 +2,44 @@
 
 import Image from 'next/image';
 import { useLocale } from '@/context/LocaleContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { fetchItems, Item } from '@/services/items';
+import ImageSlider from '@/components/ImageSlider';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { t } = useLocale();
+  const router = useRouter();
   const [searchToggle, setSearchToggle] = useState<'objects' | 'users'>('objects');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [items, setItems] = useState<Item[]>([]);
+  const [isLoadingItems, setIsLoadingItems] = useState(true);
+
+  useEffect(() => {
+    async function getItems() {
+      setIsLoadingItems(true);
+      try {
+        const data = await fetchItems();
+        setItems(data || []);
+      } catch (error) {
+        console.error("Failed to fetch items:", error);
+      } finally {
+        setIsLoadingItems(false);
+      }
+    }
+    getItems();
+  }, []);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+
+    if (searchToggle === 'objects') {
+      router.push(`/search/items?query=${encodeURIComponent(searchQuery)}`);
+    } else {
+      router.push(`/search/users?query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
 
   return (
     <div className="landing-page" style={{ backgroundColor: '#2b1d0e', minHeight: '100vh', width: '100%' }}>
@@ -31,7 +64,7 @@ export default function Home() {
               </p>
 
               {/* Refined Segmented Search */}
-              <div className="search-container card-organic" style={{
+              <form onSubmit={handleSearch} className="search-container card-organic" style={{
                 maxWidth: '750px',
                 margin: '0 auto',
                 textAlign: 'left',
@@ -43,6 +76,7 @@ export default function Home() {
               }}>
                 <div className="search-toggle" style={{ display: 'flex', gap: '1.5rem', marginBottom: '2rem', borderBottom: '2px solid var(--color-sand)', paddingBottom: '1.2rem' }}>
                   <button
+                    type="button"
                     onClick={() => setSearchToggle('objects')}
                     style={{
                       background: 'transparent',
@@ -59,6 +93,7 @@ export default function Home() {
                     Objetos activos
                   </button>
                   <button
+                    type="button"
                     onClick={() => setSearchToggle('users')}
                     style={{
                       background: 'transparent',
@@ -79,6 +114,8 @@ export default function Home() {
                   <input
                     type="text"
                     className="search-input"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder={searchToggle === 'objects' ? "Escribe qué buscas..." : "Escribe quién buscas..."}
                     style={{
                       flex: 1,
@@ -89,11 +126,11 @@ export default function Home() {
                       border: '1px solid #ddd'
                     }}
                   />
-                  <button className="oasis-button" style={{ padding: '0 3rem', fontSize: '1.1rem' }}>
+                  <button type="submit" className="oasis-button" style={{ padding: '0 3rem', fontSize: '1.1rem' }}>
                     {searchToggle === 'objects' ? 'Buscar Objetos' : 'Buscar Usuarios'}
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -221,10 +258,79 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Items Section */}
+      <section className="feed-section" style={{ padding: '6rem 1rem', backgroundColor: '#FDF8ED', borderRadius: '100px 100px 0 0' }}>
+        <div className="grid-container">
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: '3rem',
+            marginBottom: '4rem',
+            color: 'var(--color-clay)',
+            fontWeight: 'bold'
+          }}>
+            {t.items?.discover_treasures_title || "Discover Treasures"}
+          </h2>
+
+          {isLoadingItems ? (
+            <div className="text-center" style={{ color: 'var(--color-clay)', padding: '4rem 0' }}>
+              <div className="loading-spinner" style={{ fontSize: '3rem', animation: 'spin 2s linear infinite' }}>⌛</div>
+              <p style={{ fontSize: '1.2rem', marginTop: '1rem' }}>{t.items?.loading || "Loading artifacts..."}</p>
+            </div>
+          ) : (
+            <div className="grid-x grid-padding-x" style={{ gap: '2rem 0' }}>
+              {items.length > 0 ? (
+                items.map(item => (
+                  <div key={item.id} className="cell large-4 medium-6 small-12">
+                    <div className="card-organic" style={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                      cursor: 'pointer'
+                    }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-10px)';
+                        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      <div style={{ height: '250px', marginBottom: '1.5rem', borderRadius: '15px', overflow: 'hidden' }}>
+                        <ImageSlider images={item.images} alt={item.title} />
+                      </div>
+                      <h3 style={{ fontSize: '1.5rem', color: 'var(--color-clay)', marginBottom: '0.8rem', fontWeight: 'bold' }}>{item.title}</h3>
+                      <p style={{ color: '#666', flex: 1, lineHeight: '1.5' }}>
+                        {item.description.length > 120 ? `${item.description.substring(0, 120)}...` : item.description}
+                      </p>
+                      <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: '0.9rem', color: 'var(--color-terracotta)', fontWeight: '600' }}>
+                          {item.user?.name || "Explorer"}
+                        </span>
+                        <button className="oasis-button" style={{ padding: '0.5rem 1.5rem', fontSize: '0.9rem' }}>
+                          {t.items?.trade_button || "Trade"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="cell text-center" style={{ padding: '4rem 0', width: '100%' }}>
+                  <p style={{ fontSize: '1.2rem', color: 'var(--color-clay)', fontStyle: 'italic' }}>
+                    {t.items?.no_items_message || "The bazaar is quiet... for now."}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* Bazaar Image Section */}
       <section style={{
         width: '100%',
-        height: '300px',
+        height: '400px',
         overflow: 'hidden',
         margin: 0,
         padding: 0
@@ -236,7 +342,8 @@ export default function Home() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            display: 'block'
+            display: 'block',
+            filter: 'sepia(0.2)'
           }}
         />
       </section>
