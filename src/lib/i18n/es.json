@@ -133,8 +133,15 @@
     "status_completed": "Completado",
     "action_accept": "Aceptar Trueque",
     "action_reject": "Rechazar",
-    "action_cancel": "Cancelar Propuesta",
-    "action_complete": "Marcar como Completado",
+    "action_cancel": "Cancelar",
+    "action_complete": "Completar",
+    "action_chat": "Chat",
+    "chat": {
+      "title": "Chat del Explorador",
+      "placeholder": "Escribe un mensaje...",
+      "send": "Enviar",
+      "no_messages": "Aún no hay mensajes. ¡Di hola!"
+    },
     "no_trades": "No hay trueques activos en este oasis todavia.",
     "initiation_title": "Proponer un Trueque",
     "select_your_item": "Selecciona cual de tus tesoros ofrecer:",

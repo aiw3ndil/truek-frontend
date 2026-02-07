@@ -6,6 +6,7 @@ import { useLocale } from '@/context/LocaleContext';
 import { fetchTrades, updateTradeAction, Trade, TradeStatus } from '@/services/trades';
 import withAuth from '@/components/withAuth';
 import Link from 'next/link';
+import TradeChat from '@/components/TradeChat';
 
 function TradesDashboard() {
     const { user } = useAuth() || {};
@@ -14,6 +15,7 @@ function TradesDashboard() {
     const [isLoading, setIsLoading] = useState(true);
     const [statusFilter, setStatusFilter] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
+    const [activeTradeChatId, setActiveTradeChatId] = useState<number | null>(null);
 
     const tr = (t as any).trades;
 
@@ -94,8 +96,18 @@ function TradesDashboard() {
                         </button>
                     )}
                     {trade.status === 'accepted' && (
-                        <button onClick={() => handleAction(trade.id, 'complete')} className="oasis-button" style={{ padding: '0.4rem 1rem', fontSize: '0.8rem' }}>
-                            {tr?.action_complete || "Complete"}
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <button onClick={() => setActiveTradeChatId(trade.id)} className="oasis-button" style={{ padding: '0.4rem 1.2rem', fontSize: '0.8rem', backgroundColor: 'var(--color-ochre)' }}>
+                                💬 {tr?.action_chat || "Chat"}
+                            </button>
+                            <button onClick={() => handleAction(trade.id, 'complete')} className="oasis-button" style={{ padding: '0.4rem 1rem', fontSize: '0.8rem' }}>
+                                {tr?.action_complete || "Complete"}
+                            </button>
+                        </div>
+                    )}
+                    {trade.status === 'completed' && (
+                        <button onClick={() => setActiveTradeChatId(trade.id)} className="oasis-button" style={{ padding: '0.4rem 1.2rem', fontSize: '0.8rem', backgroundColor: 'var(--color-ochre)' }}>
+                            💬 {tr?.action_chat || "Chat"}
                         </button>
                     )}
                 </div>
@@ -179,6 +191,13 @@ function TradesDashboard() {
                     </div>
                 )}
             </div>
+
+            {activeTradeChatId && (
+                <TradeChat
+                    tradeId={activeTradeChatId}
+                    onClose={() => setActiveTradeChatId(null)}
+                />
+            )}
         </div>
     );
 }

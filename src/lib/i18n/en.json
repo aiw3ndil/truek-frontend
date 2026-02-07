@@ -133,8 +133,15 @@
     "status_completed": "Completed",
     "action_accept": "Accept Trade",
     "action_reject": "Reject",
-    "action_cancel": "Cancel Proposal",
-    "action_complete": "Mark as Completed",
+    "action_cancel": "Cancel",
+    "action_complete": "Complete",
+    "action_chat": "Chat",
+    "chat": {
+      "title": "Explorer Chat",
+      "placeholder": "Write a message...",
+      "send": "Send",
+      "no_messages": "No messages yet. Say hello!"
+    },
     "no_trades": "No active trades in this oasis yet.",
     "initiation_title": "Propose a Trade",
     "select_your_item": "Select which of your treasures to offer:",
