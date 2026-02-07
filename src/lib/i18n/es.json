@@ -143,6 +143,12 @@
       "no_messages": "Aún no hay mensajes. ¡Di hola!"
     },
     "no_trades": "No hay trueques activos en este oasis todavia.",
+    "notifications": {
+      "title": "Notificaciones",
+      "mark_all_read": "Marcar todo como leído",
+      "empty": "No tienes notificaciones todavía",
+      "clear": "Limpiar"
+    },
     "initiation_title": "Proponer un Trueque",
     "select_your_item": "Selecciona cual de tus tesoros ofrecer:",
     "confirm_proposal": "Enviar Propuesta",

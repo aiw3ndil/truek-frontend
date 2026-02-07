@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
+import NotificationBell from './NotificationBell';
 import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
 
@@ -51,6 +52,11 @@ export default function Header() {
           <li>
             <LanguageSwitcher />
           </li>
+          {auth?.isAuthenticated() && (
+            <li style={{ marginLeft: '1rem' }}>
+              <NotificationBell />
+            </li>
+          )}
           {auth && (
             <>
               {auth.isAuthenticated() ? (

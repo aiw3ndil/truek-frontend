@@ -143,6 +143,12 @@
       "no_messages": "Ei viestejä vielä. Sano hei!"
     },
     "no_trades": "Tassa keitaassa ei ole vielä aktiivisia kauppoja.",
+    "notifications": {
+      "title": "Ilmoitukset",
+      "mark_all_read": "Merkitse kaikki luetuiksi",
+      "empty": "Ei ilmoituksia vielä",
+      "clear": "Tyhjennä"
+    },
     "initiation_title": "Ehdotah vaihtoa",
     "select_your_item": "Valitse mita aarteistasi tarjoat:",
     "confirm_proposal": "Laheta ehdotus",
