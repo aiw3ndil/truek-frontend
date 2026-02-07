@@ -10,13 +10,21 @@ export default function withAuth<P extends object>(Component: ComponentType<P>) 
     const router = useRouter();
 
     useEffect(() => {
-      if (auth && !auth.isAuthenticated()) {
+      if (auth && !auth.isLoading && !auth.isAuthenticated()) {
         router.push('/login');
       }
     }, [auth, router]);
 
-    if (!auth || !auth.isAuthenticated()) {
-      return null; // or a loading spinner
+    if (!auth || auth.isLoading) {
+      return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: '#2b1d0e' }}>
+          <div className="loading-spinner" style={{ fontSize: '3rem', animation: 'spin 2s linear infinite' }}>⌛</div>
+        </div>
+      );
+    }
+
+    if (!auth.isAuthenticated()) {
+      return null;
     }
 
     return <Component {...props} />;

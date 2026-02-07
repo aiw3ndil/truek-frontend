@@ -19,6 +19,7 @@ interface AuthContextType {
   register: (username: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
   isAuthenticated: () => boolean;
   updateUserProfile: (name: string, picture: File | string) => Promise<void>;
+  isLoading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -29,6 +30,7 @@ interface AuthProviderProps {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   const fetchMe = async () => {
@@ -50,7 +52,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } catch (error) {
         localStorage.removeItem('token');
         setUser(null);
+      } finally {
+        setIsLoading(false);
       }
+    } else {
+      setIsLoading(false);
     }
   };
 
@@ -97,7 +103,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated, updateUserProfile }}>
+    <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated, updateUserProfile, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
