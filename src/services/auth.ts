@@ -55,9 +55,10 @@ export async function loginWithGoogle(token: string): Promise<AuthResponse> {
   return response.json();
 }
 
-export async function updateProfile(token: string, name: string, picture: File | string): Promise<any> {
+export async function updateProfile(token: string, name: string, language: string, picture: File | string): Promise<void> {
   const formData = new FormData();
   formData.append('name', name);
+  formData.append('language', language);
 
   if (picture instanceof File) {
     formData.append('picture', picture);
@@ -80,6 +81,6 @@ export async function updateProfile(token: string, name: string, picture: File |
     const errorData = await response.json();
     throw new Error(errorData.error || 'Failed to update profile');
   }
-
-  return response.json();
 }
+
+
