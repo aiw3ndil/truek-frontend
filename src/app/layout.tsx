@@ -9,6 +9,8 @@ import { LocaleProvider } from '@/context/LocaleContext';
 import { AuthProvider } from '@/context/AuthContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -46,6 +48,7 @@ export default function RootLayout({
             </GoogleOAuthProvider>
           </AuthProvider>
         </LocaleProvider>
+        <GoogleAnalytics gaId="G-10X65KWK3D" />
       </body>
     </html>
   );
