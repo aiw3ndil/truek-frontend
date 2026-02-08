@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { fetchItems, Item } from '@/services/items';
+import { searchItems, Item } from '@/services/items';
 import { fetchUserById, UserSearchResult } from '@/services/users';
 import { useLocale } from '@/context/LocaleContext';
 import ImageSlider from '@/components/ImageSlider';
@@ -26,7 +26,7 @@ export default function UserInventoryPage() {
             try {
                 const [userData, itemsData] = await Promise.all([
                     fetchUserById(id as string),
-                    fetchItems(id as string)
+                    searchItems(id as string)
                 ]);
                 setUser(userData);
                 setItems(itemsData || []);
