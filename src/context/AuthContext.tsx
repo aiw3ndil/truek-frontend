@@ -20,7 +20,7 @@ interface AuthContextType {
   logout: () => void;
   register: (username: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
   isAuthenticated: () => boolean;
-  updateUserProfile: (name: string, language: string, picture: File | string) => Promise<void>;
+  updateUserProfile: (name: string, language: string, region: string, picture: File | string) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -88,11 +88,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
-  const updateUserProfile = async (name: string, language: string, picture: File | string) => {
+  const updateUserProfile = async (name: string, language: string, region: string, picture: File | string) => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        await updateProfile(token, name, language, picture);
+        await updateProfile(token, name, language, region, picture);
         await fetchMe();
       } catch (error) {
         throw error;

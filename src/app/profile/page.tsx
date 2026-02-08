@@ -10,6 +10,7 @@ function ProfilePage() {
   const { t } = useLocale();
   const [name, setName] = useState('');
   const [language, setLanguage] = useState('');
+  const [region, setRegion] = useState('');
   const [pictureUrl, setPictureUrl] = useState('');
   const [pictureFile, setPictureFile] = useState<File | null>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
@@ -20,6 +21,7 @@ function ProfilePage() {
       setName(auth.user.name || auth.user.username || '');
       setPictureUrl(auth.user.picture || '');
       setLanguage(auth.user.language || 'en');
+      setRegion(auth.user.region || '');
     }
   }, [auth]);
 
@@ -40,7 +42,7 @@ function ProfilePage() {
 
     try {
       // Pass the file if selected, otherwise pass the existing URL (or empty string)
-      await auth.updateUserProfile(name, language, pictureFile || pictureUrl);
+      await auth.updateUserProfile(name, language, region, pictureFile || pictureUrl);
       setMessage({ type: 'success', text: t.profile?.success_message || 'Profile updated successfully!' });
       setPictureFile(null); // Reset file selection after successful upload
     } catch (error) {
@@ -118,6 +120,20 @@ function ProfilePage() {
                           <option value="en">English</option>
                           <option value="es">Español</option>
                           <option value="fi">Suomi</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div className="cell">
+                      <label style={{ color: 'var(--color-clay)', fontWeight: '600' }}>
+                        Region
+                        <select
+                          value={region}
+                          onChange={(e) => setRegion(e.target.value)}
+                          className="search-input"
+                          style={{ marginTop: '0.5rem' }}
+                        >
+                          <option value="es">España</option>
+                          <option value="fi">Finlandia</option>
                         </select>
                       </label>
                     </div>

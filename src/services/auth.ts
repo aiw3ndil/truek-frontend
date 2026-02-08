@@ -60,10 +60,11 @@ export async function loginWithGoogle(token: string): Promise<AuthResponse> {
   return JSON.parse(text);
 }
 
-export async function updateProfile(token: string, name: string, language: string, picture: File | string): Promise<void> {
+export async function updateProfile(token: string, name: string, language: string, region: string, picture: File | string): Promise<void> {
   const formData = new FormData();
   formData.append('name', name);
   formData.append('language', language);
+  formData.append('region', region);
 
   if (picture instanceof File) {
     formData.append('picture', picture);
