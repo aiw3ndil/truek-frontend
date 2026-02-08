@@ -90,10 +90,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const updateUserProfile = async (name: string, language: string, region: string, picture: File | string) => {
     const token = localStorage.getItem('token');
-    if (token) {
+    if (token && user) {
       try {
         await updateProfile(token, name, language, region, picture);
-        await fetchMe();
+        // Update user state locally to avoid race condition with fetchMe
+        const updatedUser = { ...user, name, language, region };
+        // If a new picture was uploaded, we can't know the new URL without a response
+        // For now, we'll refetch from the server to get the new picture URL.
+        // A better long-term solution would be for the API to return the updated user object.
+        if (typeof picture === 'string') {
+          updatedUser.picture = picture;
+        }
+        setUser(updatedUser);
+        // We still need to fetch if a file was uploaded to get the new URL
+        if (picture instanceof File) {
+          await fetchMe();
+        }
       } catch (error) {
         throw error;
       }
