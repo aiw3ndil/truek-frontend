@@ -34,3 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Backend Connection Configuration
+
+The frontend application connects to the backend API using an environment variable `NEXT_PUBLIC_API_URL`. This variable defines the base URL for all API requests.
+
+**Development Environment:**
+In the development environment, if `NEXT_PUBLIC_API_URL` is not explicitly set, it defaults to `http://localhost:3000/api/v1`. This allows for local development against a local backend server.
+
+**Production and Other Environments:**
+For production deployments (or any other environment like staging, etc.), it is crucial to set the `NEXT_PUBLIC_API_URL` environment variable to the actual URL of your deployed backend API.
+
+**Example:**
+
+If your backend API is deployed at `https://api.yourdomain.com/api/v1`, you should set the environment variable as follows:
+
+```
+NEXT_PUBLIC_API_URL=https://api.yourdomain.com/api/v1
+```
+
+**How to set environment variables:**
+
+*   **Vercel:** You can set environment variables in your Vercel project settings under "Environment Variables".
+*   **Other Hosting Platforms:** Refer to your hosting provider's documentation for instructions on how to set environment variables.
+*   **Local Development:** Create a `.env.local` file in the root of your project and add the variable there (e.g., `NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1`). This file should *not* be committed to version control.
