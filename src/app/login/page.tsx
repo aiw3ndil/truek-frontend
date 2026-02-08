@@ -5,7 +5,7 @@ import { useLocale } from '@/context/LocaleContext';
 import Link from 'next/link';
 import { login, loginWithGoogle } from '@/services/auth';
 import { useRouter } from 'next/navigation';
-import { useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { useAuth } from '@/context/AuthContext';
 
 export default function LoginPage() {
@@ -30,10 +30,10 @@ export default function LoginPage() {
     }
   };
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
+  const handleGoogleSuccess = async (credentialResponse: CredentialResponse) => {
+    if (credentialResponse.credential) {
       try {
-        const data = await loginWithGoogle(tokenResponse.access_token);
+        const data = await loginWithGoogle(credentialResponse.credential);
         if (auth) {
           auth.login(data.token);
           router.push('/');
@@ -41,11 +41,14 @@ export default function LoginPage() {
       } catch (error) {
         setError((error as Error).message || 'An error occurred');
       }
-    },
-    onError: (error) => {
-      setError(error.error_description || 'Failed to login with Google');
-    },
-  });
+    } else {
+      setError('Google login failed: no credential received');
+    }
+  };
+
+  const handleGoogleError = () => {
+    setError('Failed to login with Google');
+  };
 
   return (
     <div className="login-container" style={{
@@ -93,10 +96,13 @@ export default function LoginPage() {
           <div style={{ flex: 1, height: '1px', background: '#ddd' }}></div>
         </div>
 
-        <button onClick={() => googleLogin()} className="oasis-button" style={{ width: '100%', backgroundColor: '#fff', color: '#757575', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style={{ width: '18px' }} />
-          {t.login.google_login_button}
-        </button>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleError}
+            useOneTap
+          />
+        </div>
 
         <p className="text-center" style={{ marginTop: '2rem', fontSize: '0.95rem' }}>
           {t.login.no_account_text}{' '}
