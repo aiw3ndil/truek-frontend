@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useLocale } from '@/context/LocaleContext';
 import { useState, useEffect } from 'react';
-import { fetchItems, Item } from '@/services/items';
+import { searchItems, Item } from '@/services/items';
 import ImageSlider from '@/components/ImageSlider';
 import { useRouter } from 'next/navigation';
 import TradeModal from '@/components/TradeModal';
@@ -23,16 +23,18 @@ export default function Home() {
     async function getItems() {
       setIsLoadingItems(true);
       try {
-        const data = await fetchItems();
+        const region = authUser?.region;
+        const data = await searchItems(undefined, undefined, region);
         setItems(data || []);
-      } catch (error) {
-        console.error("Failed to fetch items:", error);
+      } catch (err) {
+        const e = err as Error;
+        console.error("Failed to fetch items:", e.message);
       } finally {
         setIsLoadingItems(false);
       }
     }
     getItems();
-  }, []);
+  }, [authUser]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -349,7 +351,7 @@ export default function Home() {
           onClose={() => setTradeModalItem(null)}
           onSuccess={() => {
             setTradeModalItem(null);
-            alert((t as any).trades?.proposal_success || "Proposal sent to the winds!");
+            alert(t.trades.proposal_success);
           }}
         />
       )}

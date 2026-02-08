@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useState, useEffect, Suspense } from 'react';
-import { fetchItems, Item } from '@/services/items';
+import { searchItems, Item } from '@/services/items';
 import { useLocale } from '@/context/LocaleContext';
 import ImageSlider from '@/components/ImageSlider';
 import Link from 'next/link';
@@ -22,18 +22,20 @@ function SearchItemsContent() {
         async function performSearch() {
             setIsLoading(true);
             try {
-                const results = await fetchItems(undefined, query);
+                const region = authUser?.region;
+                const results = await searchItems(undefined, query, region);
                 setItems(results || []);
-            } catch (error) {
-                console.error("Search items failed:", error);
+            } catch (err) {
+                const e = err as Error;
+                console.error("Search items failed:", e.message);
             } finally {
                 setIsLoading(false);
             }
         }
         performSearch();
-    }, [query]);
+    }, [query, authUser]);
 
-    const s = (t as any).search;
+    const s = t.search;
 
     return (
         <div className="search-results-page" style={{ backgroundColor: '#FDF8ED', minHeight: '100vh', padding: '4rem 1rem' }}>

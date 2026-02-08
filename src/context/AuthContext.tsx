@@ -10,6 +10,7 @@ interface User {
   email: string;
   name?: string;
   language?: string;
+  region?: string;
   picture?: string;
 }
 
