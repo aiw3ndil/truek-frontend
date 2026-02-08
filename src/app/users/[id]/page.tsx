@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { searchItems, Item } from '@/services/items';
 import { fetchUserById, UserSearchResult } from '@/services/users';
+import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
 import ImageSlider from '@/components/ImageSlider';
 import Link from 'next/link';
