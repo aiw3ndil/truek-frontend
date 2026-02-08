@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
-import { fetchItems, Item } from '@/services/items';
+import { searchItems, Item } from '@/services/items';
 import { createTrade } from '@/services/trades';
 
 interface TradeModalProps {
@@ -28,7 +28,7 @@ export default function TradeModal({ receiverItem, onClose, onSuccess }: TradeMo
             if (!user) return;
             setIsLoading(true);
             try {
-                const items = await fetchItems(user.id);
+                const items = await searchItems(user.id);
                 // Only show available items
                 setMyItems(items.filter(item => item.status === 'available') || []);
             } catch (err) {

@@ -6,7 +6,7 @@ import ImageSlider from '@/components/ImageSlider';
 import withAuth from '@/components/withAuth';
 import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
-import { fetchItems, deleteItem, Item } from '@/services/items';
+import { searchItems, deleteItem, Item } from '@/services/items';
 
 import { toast } from 'sonner';
 
@@ -34,7 +34,7 @@ function MyItemsPage() {
                 try {
                     // Assuming the backend filters by user when user_id is passed, or we might need to filter client side if API is generic
                     // Based on items.ts implementation, passing user_id as argument appends query param
-                    const data = await fetchItems(auth.user.id);
+                    const data = await searchItems(auth.user.id);
                     // If the API returns all items when filtering is not fully implemented on backend, we might need client side filtering
                     // But assuming fetchItems logic holds.
                     // However, if the backend strictly uses specific params (like q[user_id_eq]), we might need to adjust.
