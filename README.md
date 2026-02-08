@@ -58,3 +58,20 @@ NEXT_PUBLIC_API_URL=https://api.yourdomain.com/api/v1
 *   **Vercel:** You can set environment variables in your Vercel project settings under "Environment Variables".
 *   **Other Hosting Platforms:** Refer to your hosting provider's documentation for instructions on how to set environment variables.
 *   **Local Development:** Create a `.env.local` file in the root of your project and add the variable there (e.g., `NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1`). This file should *not* be committed to version control.
+
+## Google OAuth Configuration
+
+The frontend application uses Google OAuth for user authentication. To enable this, you need to configure the `NEXT_PUBLIC_GOOGLE_CLIENT_ID` environment variable.
+
+**How to get your Google Client ID:**
+
+1.  Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2.  Select your project or create a new one.
+3.  Navigate to "APIs & Services" > "Credentials".
+4.  Create an "OAuth client ID" for a "Web application".
+5.  You will get a Client ID.
+
+**Configuring the `NEXT_PUBLIC_GOOGLE_CLIENT_ID`:**
+
+*   **Vercel:** Set the `NEXT_PUBLIC_GOOGLE_CLIENT_ID` environment variable in your Vercel project settings under "Environment Variables".
+*   **Local Development:** Create a `.env.local` file in the root of your project and add the variable there (e.g., `NEXT_PUBLIC_GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID`). This file should *not* be committed to version control.
