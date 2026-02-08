@@ -79,6 +79,7 @@
   "profile": {
     "title": "Your Profile",
     "name_label": "Name",
+    "language_label": "Preferred Language for Notifications",
     "picture_label": "Profile Picture",
     "upload_button": "Upload New Picture",
     "save_button": "Update Profile",

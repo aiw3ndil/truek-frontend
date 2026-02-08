@@ -79,6 +79,7 @@
   "profile": {
     "title": "Profiilisi",
     "name_label": "Nimi",
+    "language_label": "Ensisijainen kieli ilmoituksille",
     "picture_label": "Profiilikuva",
     "upload_button": "Lataa uusi kuva",
     "save_button": "Paivita profiili",

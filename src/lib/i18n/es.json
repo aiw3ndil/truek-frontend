@@ -79,6 +79,7 @@
   "profile": {
     "title": "Tu Perfil",
     "name_label": "Nombre",
+    "language_label": "Idioma preferido para las notificaciones",
     "picture_label": "Foto de Perfil",
     "upload_button": "Subir Nueva Foto",
     "save_button": "Actualizar Perfil",
