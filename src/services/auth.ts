@@ -52,7 +52,12 @@ export async function loginWithGoogle(token: string): Promise<AuthResponse> {
     throw new Error(errorData.error || 'Failed to login with Google');
   }
 
-  return response.json();
+  const text = await response.text();
+  if (!text) {
+    throw new Error('Empty response from server during Google login');
+  }
+
+  return JSON.parse(text);
 }
 
 export async function updateProfile(token: string, name: string, language: string, picture: File | string): Promise<void> {
