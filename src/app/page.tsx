@@ -1,13 +1,13 @@
 'use client';
 
-import Image from 'next/image';
+import { toast } from 'sonner';
 import { useLocale } from '@/context/LocaleContext';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 import { useState, useEffect } from 'react';
 import { searchItems, Item } from '@/services/items';
 import ImageSlider from '@/components/ImageSlider';
-import { useRouter } from 'next/navigation';
 import TradeModal from '@/components/TradeModal';
-import { useAuth } from '@/context/AuthContext';
 
 export default function Home() {
   const { t } = useLocale();
@@ -351,7 +351,7 @@ export default function Home() {
           onClose={() => setTradeModalItem(null)}
           onSuccess={() => {
             setTradeModalItem(null);
-            alert(t.trades.proposal_success);
+            toast.success(t.trades.proposal_success);
           }}
         />
       )}

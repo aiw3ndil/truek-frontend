@@ -8,6 +8,8 @@ import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
 import { fetchItems, deleteItem, Item } from '@/services/items';
 
+import { toast } from 'sonner';
+
 function MyItemsPage() {
     const auth = useAuth();
     const { t } = useLocale();
@@ -22,7 +24,7 @@ function MyItemsPage() {
             await deleteItem(localStorage.getItem('token') || '', itemId);
             setItems(prev => prev.filter(i => i.id !== itemId));
         } catch (err: any) {
-            alert(err.message || 'Failed to delete item');
+            toast.error(err.message || 'Failed to delete item');
         }
     };
 

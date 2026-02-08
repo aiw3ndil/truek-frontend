@@ -9,6 +9,8 @@ import Link from 'next/link';
 import TradeModal from '@/components/TradeModal';
 import { useAuth } from '@/context/AuthContext';
 
+import { toast } from 'sonner';
+
 function SearchItemsContent() {
     const { t } = useLocale();
     const { user: authUser } = useAuth() || {};
@@ -118,7 +120,7 @@ function SearchItemsContent() {
                     onClose={() => setTradeModalItem(null)}
                     onSuccess={() => {
                         setTradeModalItem(null);
-                        alert(t.trades?.proposal_success || "Proposal sent to the winds!");
+                        toast.success(t.trades?.proposal_success || "Proposal sent to the winds!");
                     }}
                 />
             )}

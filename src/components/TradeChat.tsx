@@ -5,6 +5,8 @@ import { useAuth } from '@/context/AuthContext';
 import { useLocale } from '@/context/LocaleContext';
 import { fetchMessages, sendMessage, Message } from '@/services/messages';
 
+import { toast } from 'sonner';
+
 interface TradeChatProps {
     tradeId: number;
     onClose: () => void;
@@ -54,7 +56,7 @@ export default function TradeChat({ tradeId, onClose }: TradeChatProps) {
             setNewMessage('');
             loadMessages();
         } catch (err: any) {
-            alert(err.message || "Failed to send message");
+            toast.error(err.message || "Failed to send message");
         } finally {
             setIsSending(false);
         }

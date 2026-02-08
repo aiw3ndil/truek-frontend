@@ -7,8 +7,8 @@ import { fetchUserById, UserSearchResult } from '@/services/users';
 import { useLocale } from '@/context/LocaleContext';
 import ImageSlider from '@/components/ImageSlider';
 import Link from 'next/link';
+import { toast } from 'sonner';
 import TradeModal from '@/components/TradeModal';
-import { useAuth } from '@/context/AuthContext';
 
 export default function UserInventoryPage() {
     const { id } = useParams();
@@ -166,7 +166,7 @@ export default function UserInventoryPage() {
                     onClose={() => setTradeModalItem(null)}
                     onSuccess={() => {
                         setTradeModalItem(null);
-                        alert((t as any).trades?.proposal_success || "Proposal sent to the winds!");
+                        toast.success(t.trades.proposal_success);
                     }}
                 />
             )}

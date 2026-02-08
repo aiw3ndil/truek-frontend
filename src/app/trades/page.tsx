@@ -8,6 +8,8 @@ import withAuth from '@/components/withAuth';
 import Link from 'next/link';
 import TradeChat from '@/components/TradeChat';
 
+import { toast } from 'sonner';
+
 function TradesDashboard() {
     const { user } = useAuth() || {};
     const { t } = useLocale();
@@ -41,7 +43,7 @@ function TradesDashboard() {
             await updateTradeAction(id, actionType);
             loadTrades(); // Refresh list
         } catch (err: any) {
-            alert(err.message || "Action failed");
+            toast.error(err.message || "Action failed");
         }
     };
 
