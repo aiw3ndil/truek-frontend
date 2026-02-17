@@ -39,10 +39,17 @@ function TradesDashboard() {
     }, [statusFilter]);
 
     const handleAction = async (id: number, actionType: 'accept' | 'reject' | 'cancel' | 'complete') => {
+        const originalTrades = [...trades];
+        const updatedTrades = trades.map(t =>
+            t.id === id ? { ...t, status: actionType === 'accept' ? 'accepted' : actionType === 'reject' ? 'rejected' : actionType === 'cancel' ? 'cancelled' : 'completed' } : t
+        );
+        setTrades(updatedTrades);
+
         try {
             await updateTradeAction(id, actionType);
-            loadTrades(); // Refresh list
+            toast.success(tr?.action_success || "Action completed successfully");
         } catch (err: any) {
+            setTrades(originalTrades);
             toast.error(err.message || "Action failed");
         }
     };
