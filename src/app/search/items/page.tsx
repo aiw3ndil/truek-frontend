@@ -16,6 +16,7 @@ function SearchItemsContent() {
     const { user: authUser } = useAuth() || {};
     const searchParams = useSearchParams();
     const query = searchParams.get('query') || '';
+    const region = searchParams.get('region') || '';
     const [items, setItems] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [tradeModalItem, setTradeModalItem] = useState<Item | null>(null);
