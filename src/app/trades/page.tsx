@@ -40,8 +40,18 @@ function TradesDashboard() {
 
     const handleAction = async (id: number, actionType: 'accept' | 'reject' | 'cancel' | 'complete') => {
         const originalTrades = [...trades];
+
+        let newStatus: TradeStatus;
+        switch (actionType) {
+            case 'accept': newStatus = 'accepted'; break;
+            case 'reject': newStatus = 'rejected'; break;
+            case 'cancel': newStatus = 'cancelled'; break;
+            case 'complete': newStatus = 'completed'; break;
+            default: return; // Or handle error
+        }
+
         const updatedTrades = trades.map(t =>
-            t.id === id ? { ...t, status: actionType === 'accept' ? 'accepted' : actionType === 'reject' ? 'rejected' : actionType === 'cancel' ? 'cancelled' : 'completed' } : t
+            t.id === id ? { ...t, status: newStatus } : t
         );
         setTrades(updatedTrades);
 
