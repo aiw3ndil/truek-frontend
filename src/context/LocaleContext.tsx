@@ -16,8 +16,16 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const savedLocale = localStorage.getItem('locale') as Locale;
+    
     if (savedLocale && translations[savedLocale]) {
       setLocale(savedLocale);
+    } else {
+      // Detect browser language (e.g., 'es-ES' -> 'es')
+      const browserLanguage = navigator.language.split('-')[0] as Locale;
+      
+      if (translations[browserLanguage]) {
+        setLocale(browserLanguage);
+      }
     }
   }, []);
 
