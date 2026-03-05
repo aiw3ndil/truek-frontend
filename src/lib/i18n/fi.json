@@ -32,7 +32,26 @@
     "no_account_text": "Eiko sinulla ole tilia?",
     "register_link": "Rekisteröidy",
     "or_text": "Tai",
-    "google_login_button": "Kirjaudu Googlella"
+    "google_login_button": "Kirjaudu Googlella",
+    "forgot_password_link": "Unohditko salasanasi?"
+  },
+  "forgot_password": {
+    "title": "Nollaa salasana",
+    "description": "Anna sähköpostiosoitteesi, niin lähetämme sinulle ohjeet salasanasi nollaamiseksi.",
+    "email_label": "Sähköpostiosoite",
+    "submit_button": "Lähetä ohjeet",
+    "success_message": "Jos sähköpostiosoite on olemassa, olemme lähettäneet ohjeet.",
+    "back_to_login": "Takaisin kirjautumiseen"
+  },
+  "reset_password": {
+    "title": "Aseta uusi salasana",
+    "new_password_label": "Uusi salasana",
+    "confirm_password_label": "Vahvista uusi salasana",
+    "submit_button": "Vaihda salasana",
+    "success_message": "Salasanasi on päivitetty onnistuneesti.",
+    "error_expired": "Linkki on vanhentunut. Pyydä uusi linkki.",
+    "error_invalid": "Linkki on virheellinen.",
+    "error_generic": "Salasanan nollauksessa tapahtui virhe."
   },
   "register": {
     "title": "Rekisteröidy",

@@ -85,9 +85,14 @@ export default function LoginPage() {
               style={{ width: '100%', padding: '0.8rem' }}
             />
           </div>
-          <button type="submit" className="oasis-button" style={{ width: '100%', marginBottom: '1.5rem' }}>
+          <button type="submit" className="oasis-button" style={{ width: '100%', marginBottom: '1rem' }}>
             {t.login.submit_button}
           </button>
+          <div className="text-center" style={{ marginBottom: '1.5rem' }}>
+            <Link href="/forgot-password" style={{ color: 'var(--color-terracotta)', fontSize: '0.9rem' }}>
+              {t.login.forgot_password_link}
+            </Link>
+          </div>
         </form>
 
         <div className="text-center" style={{ margin: '1.5rem 0', display: 'flex', alignItems: 'center', gap: '1rem' }}>

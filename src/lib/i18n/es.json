@@ -32,7 +32,26 @@
     "no_account_text": "No tienes una cuenta?",
     "register_link": "Registrarse",
     "or_text": "O",
-    "google_login_button": "Iniciar Sesion con Google"
+    "google_login_button": "Iniciar Sesion con Google",
+    "forgot_password_link": "¿Olvidaste tu contraseña?"
+  },
+  "forgot_password": {
+    "title": "Recuperar Contraseña",
+    "description": "Introduce tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña.",
+    "email_label": "Correo Electrónico",
+    "submit_button": "Enviar instrucciones",
+    "success_message": "Si el correo existe, hemos enviado las instrucciones.",
+    "back_to_login": "Volver al inicio de sesión"
+  },
+  "reset_password": {
+    "title": "Restablecer Contraseña",
+    "new_password_label": "Nueva Contraseña",
+    "confirm_password_label": "Confirmar Nueva Contraseña",
+    "submit_button": "Cambiar Contraseña",
+    "success_message": "Tu contraseña ha sido actualizada con éxito.",
+    "error_expired": "El enlace ha expirado. Por favor, solicita uno nuevo.",
+    "error_invalid": "El enlace no es válido.",
+    "error_generic": "Ha ocurrido un error al restablecer la contraseña."
   },
   "register": {
     "title": "Registrarse",

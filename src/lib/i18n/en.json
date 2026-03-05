@@ -32,7 +32,26 @@
     "no_account_text": "Don't have an account?",
     "register_link": "Register",
     "or_text": "Or",
-    "google_login_button": "Login with Google"
+    "google_login_button": "Login with Google",
+    "forgot_password_link": "Forgot your password?"
+  },
+  "forgot_password": {
+    "title": "Reset Password",
+    "description": "Enter your email address and we'll send you instructions to reset your password.",
+    "email_label": "Email Address",
+    "submit_button": "Send instructions",
+    "success_message": "If the email exists, we have sent instructions.",
+    "back_to_login": "Back to login"
+  },
+  "reset_password": {
+    "title": "Set New Password",
+    "new_password_label": "New Password",
+    "confirm_password_label": "Confirm New Password",
+    "submit_button": "Change Password",
+    "success_message": "Your password has been successfully updated.",
+    "error_expired": "The link has expired. Please request a new one.",
+    "error_invalid": "The link is invalid.",
+    "error_generic": "An error occurred while resetting the password."
   },
   "register": {
     "title": "Register",

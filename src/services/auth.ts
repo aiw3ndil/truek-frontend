@@ -89,4 +89,43 @@ export async function updateProfile(token: string, name: string, language: strin
   }
 }
 
+export async function forgotPassword(email: string): Promise<void> {
+  const response = await fetch(`${API_URL}/password_resets`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.error || `Failed to request password reset: ${response.status} ${response.statusText}`);
+  }
+}
+
+export async function resetPassword(token: string, password: string, passwordConfirmation: string): Promise<void> {
+  const response = await fetch(`${API_URL}/password_resets/${token}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ 
+      password, 
+      password_confirmation: passwordConfirmation 
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    if (response.status === 410) {
+      throw new Error('expired');
+    }
+    if (response.status === 404) {
+      throw new Error('invalid');
+    }
+    throw new Error(errorData.errors?.join(', ') || errorData.error || `Failed to reset password: ${response.status} ${response.statusText}`);
+  }
+}
+
 
