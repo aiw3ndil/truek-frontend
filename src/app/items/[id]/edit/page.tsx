@@ -74,6 +74,11 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
         e.preventDefault();
         if (!auth || !auth.user) return;
 
+        if (!auth.user.region) {
+            setMessage({ type: 'error', text: 'Por favor, configura tu región en tu perfil.' });
+            return;
+        }
+
         setIsSaving(true);
         setMessage(null);
 
@@ -84,6 +89,7 @@ function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
                 title,
                 description,
                 status: currentItem?.status || 'available',
+                region: auth.user.region,
                 images: validImages,
                 imagesToDelete: imagesToDelete
             });

@@ -10,7 +10,7 @@ import ImageSlider from '@/components/ImageSlider';
 import TradeModal from '@/components/TradeModal';
 
 export default function Home() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const router = useRouter();
   const { user: authUser } = useAuth() || {};
   const [searchToggle, setSearchToggle] = useState<'objects' | 'users'>('objects');
@@ -23,7 +23,8 @@ export default function Home() {
     async function getItems() {
       setIsLoadingItems(true);
       try {
-        const region = authUser?.region;
+        // If logged in, use user's region. Otherwise use region based on current locale.
+        const region = authUser?.region || locale;
         const data = await searchItems(undefined, undefined, region);
         setItems(data || []);
       } catch (err) {
@@ -34,7 +35,7 @@ export default function Home() {
       }
     }
     getItems();
-  }, [authUser]);
+  }, [authUser, locale]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

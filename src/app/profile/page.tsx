@@ -23,7 +23,7 @@ function ProfilePage() {
       setLanguage(auth.user.language || 'en');
       setRegion(auth.user.region || '');
     }
-  }, [auth?.user?.id]);
+  }, [auth?.user?.id, auth?.user?.name, auth?.user?.username, auth?.user?.picture, auth?.user?.language, auth?.user?.region]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {

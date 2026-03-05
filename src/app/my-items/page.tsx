@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import ImageSlider from '@/components/ImageSlider';
 import withAuth from '@/components/withAuth';
@@ -32,13 +32,7 @@ function MyItemsPage() {
         async function loadItems() {
             if (auth && auth.user) {
                 try {
-                    // Assuming the backend filters by user when user_id is passed, or we might need to filter client side if API is generic
-                    // Based on items.ts implementation, passing user_id as argument appends query param
                     const data = await searchItems(auth.user.id);
-                    // If the API returns all items when filtering is not fully implemented on backend, we might need client side filtering
-                    // But assuming fetchItems logic holds.
-                    // However, if the backend strictly uses specific params (like q[user_id_eq]), we might need to adjust.
-                    // For now, trusting items.ts fetchItems implementation which uses ?user_id=...
                     setItems(data);
                 } catch (err: any) {
                     setError(err.message);
@@ -49,6 +43,26 @@ function MyItemsPage() {
         }
         loadItems();
     }, [auth]);
+
+    // Group items by region
+    const groupedItems = useMemo(() => {
+        const groups: Record<string, Item[]> = {};
+        items.forEach(item => {
+            const region = item.region || 'Unknown';
+            if (!groups[region]) {
+                groups[region] = [];
+            }
+            groups[region].push(item);
+        });
+        return groups;
+    }, [items]);
+
+    const regionNames: Record<string, string> = {
+        'es': 'España',
+        'fi': 'Finlandia',
+        'en': 'International / English',
+        'Unknown': 'Sin región / Desconocido'
+    };
 
     return (
         <div className="grid-container" style={{ padding: '2rem 0' }}>
@@ -77,37 +91,50 @@ function MyItemsPage() {
                             </Link>
                         </div>
                     ) : (
-                        <div className="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3">
-                            {items.map((item) => (
-                                <div key={item.id} className="cell" style={{ marginBottom: '2rem' }}>
-                                    <div className="card-organic" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                                        <div style={{
-                                            height: '200px',
-                                            backgroundColor: 'var(--color-sand)',
-                                            marginBottom: '1rem',
-                                            borderRadius: '8px',
-                                            overflow: 'hidden'
-                                        }}>
-                                            <ImageSlider images={item.images} alt={item.title} />
-                                        </div>
-                                        <h3 style={{ fontSize: '1.2rem', color: 'var(--color-clay)', marginBottom: '0.5rem' }}>{item.title}</h3>
-                                        <p style={{ color: '#666', flex: 1 }}>{item.description.substring(0, 100)}{item.description.length > 100 ? '...' : ''}</p>
-                                        <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
-                                            <Link href={`/items/${item.id}/edit`} className="button small expanded secondary" style={{ margin: 0, fontWeight: '600' }}>
-                                                {t.items?.edit_button || "Edit"}
-                                            </Link>
-                                            <button
-                                                onClick={() => handleDelete(item.id)}
-                                                className="button small expanded alert"
-                                                style={{ margin: 0, fontWeight: '600', backgroundColor: '#cc4b37' }}
-                                            >
-                                                {t.items?.delete_button || "Delete"}
-                                            </button>
-                                        </div>
-                                    </div>
+                        Object.entries(groupedItems).map(([region, regionItems]) => (
+                            <div key={region} style={{ marginBottom: '3rem' }}>
+                                <div style={{ borderBottom: '2px solid var(--color-sand)', marginBottom: '1.5rem', paddingBottom: '0.5rem' }}>
+                                    <h2 style={{ color: 'var(--color-terracotta)', fontSize: '1.5rem', fontWeight: 'bold', margin: 0 }}>
+                                        📍 {regionNames[region] || region}
+                                    </h2>
+                                    <p style={{ color: '#888', fontSize: '0.9rem', margin: 0 }}>
+                                        {regionItems.length} {regionItems.length === 1 ? 'objeto' : 'objetos'} en esta región
+                                    </p>
                                 </div>
-                            ))}
-                        </div>
+                                
+                                <div className="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3">
+                                    {regionItems.map((item) => (
+                                        <div key={item.id} className="cell" style={{ marginBottom: '2rem' }}>
+                                            <div className="card-organic" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                                <div style={{
+                                                    height: '200px',
+                                                    backgroundColor: 'var(--color-sand)',
+                                                    marginBottom: '1rem',
+                                                    borderRadius: '8px',
+                                                    overflow: 'hidden'
+                                                }}>
+                                                    <ImageSlider images={item.images} alt={item.title} />
+                                                </div>
+                                                <h3 style={{ fontSize: '1.2rem', color: 'var(--color-clay)', marginBottom: '0.5rem' }}>{item.title}</h3>
+                                                <p style={{ color: '#666', flex: 1 }}>{item.description.substring(0, 100)}{item.description.length > 100 ? '...' : ''}</p>
+                                                <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
+                                                    <Link href={`/items/${item.id}/edit`} className="button small expanded secondary" style={{ margin: 0, fontWeight: '600' }}>
+                                                        {t.items?.edit_button || "Edit"}
+                                                    </Link>
+                                                    <button
+                                                        onClick={() => handleDelete(item.id)}
+                                                        className="button small expanded alert"
+                                                        style={{ margin: 0, fontWeight: '600', backgroundColor: '#cc4b37' }}
+                                                    >
+                                                        {t.items?.delete_button || "Delete"}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))
                     )}
                 </div>
             </div>

@@ -10,6 +10,7 @@ export interface Item {
     title: string;
     description: string;
     status: string;
+    region?: string;
     user_id: number;
     user?: {
         id: number;
@@ -57,11 +58,12 @@ export async function fetchItem(id: string): Promise<Item> {
     return response.json();
 }
 
-export async function createItem(token: string, data: { title: string; description: string; status: string; images: File[] }): Promise<Item> {
+export async function createItem(token: string, data: { title: string; description: string; status: string; region: string; images: File[] }): Promise<Item> {
     const formData = new FormData();
     formData.append('item[title]', data.title);
     formData.append('item[description]', data.description);
     formData.append('item[status]', data.status);
+    formData.append('item[region]', data.region);
 
     data.images.forEach((image, index) => {
         formData.append(`item[item_images_attributes][${index}][file]`, image);
@@ -83,11 +85,12 @@ export async function createItem(token: string, data: { title: string; descripti
     return response.json();
 }
 
-export async function updateItem(token: string, id: string | number, data: { title?: string; description?: string; status?: string; images?: File[]; imagesToDelete?: number[] }): Promise<Item> {
+export async function updateItem(token: string, id: string | number, data: { title?: string; description?: string; status?: string; region?: string; images?: File[]; imagesToDelete?: number[] }): Promise<Item> {
     const formData = new FormData();
     if (data.title) formData.append('item[title]', data.title);
     if (data.description) formData.append('item[description]', data.description);
     if (data.status) formData.append('item[status]', data.status);
+    if (data.region) formData.append('item[region]', data.region);
 
     let imageIndex = 0;
     if (data.images) {

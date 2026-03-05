@@ -10,7 +10,7 @@ import { createItem } from '@/services/items';
 function CreateItemPage() {
     const auth = useAuth();
     const router = useRouter();
-    const { t } = useLocale();
+    const { t, locale } = useLocale();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     // Use stable IDs for keys to prevent input recreation and loss of focus/file
@@ -38,6 +38,13 @@ function CreateItemPage() {
         e.preventDefault();
         if (!auth || !auth.user) return;
 
+        console.log('User region in new item page:', auth.user.region);
+
+        if (!auth.user.region) {
+            setMessage({ type: 'error', text: 'Por favor, configura tu región en tu perfil antes de crear un objeto.' });
+            return;
+        }
+
         setIsLoading(true);
         setMessage(null);
 
@@ -45,10 +52,13 @@ function CreateItemPage() {
             // Filter out null files
             const validImages = imageFields.map(f => f.file).filter((f): f is File => f !== null);
 
+            console.log('Sending region to createItem:', auth.user.region);
+
             await createItem(localStorage.getItem('token') || '', {
                 title,
                 description,
                 status: 'available',
+                region: auth.user.region,
                 images: validImages
             });
             router.push('/my-items');
