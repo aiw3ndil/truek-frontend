@@ -9,23 +9,28 @@ export interface UserSearchResult {
 }
 
 export async function fetchUsers(query?: string): Promise<UserSearchResult[]> {
-    const url = new URL(`${API_URL}/users`);
+    const searchParams = new URLSearchParams();
     if (query) {
-        url.searchParams.append('query', query);
+        searchParams.append('query', query);
     }
 
-    const response = await fetch(url.toString());
+    const queryString = searchParams.toString();
+    const url = `${API_URL}/users${queryString ? `?${queryString}` : ''}`;
+
+    const response = await fetch(url);
     if (!response.ok) {
-        throw new Error('Failed to fetch users');
+        throw new Error(`Failed to fetch users: ${response.status} ${response.statusText}`);
     }
     return response.json();
 }
+
 export async function fetchUserById(id: string): Promise<UserSearchResult> {
     try {
         const response = await fetch(`${API_URL}/users/${id}`);
         if (response.ok) {
             return response.json();
         }
+        console.warn(`Direct fetch for user ${id} failed with status ${response.status}, trying list fallback...`);
     } catch (e) {
         console.warn(`Direct fetch for user ${id} failed, trying list fallback...`);
     }
@@ -34,7 +39,7 @@ export async function fetchUserById(id: string): Promise<UserSearchResult> {
     const users = await fetchUsers();
     const user = users.find(u => u.id.toString() === id);
     if (!user) {
-        throw new Error('Failed to fetch user');
+        throw new Error(`Failed to fetch user ${id}`);
     }
     return user;
 }

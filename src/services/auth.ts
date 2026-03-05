@@ -14,25 +14,30 @@ export async function login(email: string, password: string): Promise<AuthRespon
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || 'Failed to login');
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.error || `Failed to login: ${response.status} ${response.statusText}`);
   }
 
   return response.json();
 }
 
-export async function register(username: string, email: string, password: string): Promise<AuthResponse> {
+export async function register(username: string, email: string, password: string, passwordConfirmation: string): Promise<AuthResponse> {
   const response = await fetch(`${API_URL}/auth/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ username, email, password }),
+    body: JSON.stringify({ 
+      name: username, 
+      email, 
+      password, 
+      password_confirmation: passwordConfirmation 
+    }),
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.errors.join(', '));
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.errors?.join(', ') || `Failed to register: ${response.status} ${response.statusText}`);
   }
 
   return response.json();
@@ -48,8 +53,8 @@ export async function loginWithGoogle(token: string): Promise<AuthResponse> {
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || 'Failed to login with Google');
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.error || `Failed to login with Google: ${response.status} ${response.statusText}`);
   }
 
   const text = await response.text();
@@ -69,23 +74,18 @@ export async function updateProfile(token: string, name: string, language: strin
   if (picture instanceof File) {
     formData.append('picture', picture);
   }
-  // If picture is a string (URL), we don't send it as 'picture' param usually implies a file upload
-  // or the backend handles it differently. Assuming backend expects file for 'picture'.
-  // If you need to clear the picture or send a URL, adjust backend expectations.
-  // For this implementation, we only append if it's a File (new upload).
 
   const response = await fetch(`${API_URL}/users/me`, {
     method: 'PUT',
     headers: {
       'Authorization': `Bearer ${token}`
-      // Content-Type is NOT set for FormData, browser does it with boundary
     },
     body: formData,
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || 'Failed to update profile');
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.error || `Failed to update profile: ${response.status} ${response.statusText}`);
   }
 }
 

@@ -79,7 +79,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const register = async (username: string, email: string, password: string, passwordConfirmation: string) => {
     try {
-      const data = await registerService(username, email, password);
+      const data = await registerService(username, email, password, passwordConfirmation);
       localStorage.setItem('token', data.token);
       await fetchMe();
       router.push('/');

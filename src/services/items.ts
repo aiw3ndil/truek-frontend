@@ -22,28 +22,37 @@ export interface Item {
 }
 
 export async function searchItems(userId?: number | string, query?: string, region?: string): Promise<Item[]> {
-    const url = new URL(`${API_URL}/items`);
+    const searchParams = new URLSearchParams();
     if (userId) {
-        url.searchParams.append('user_id', userId.toString());
+        searchParams.append('user_id', userId.toString());
     }
     if (query) {
-        url.searchParams.append('query', query);
+        searchParams.append('query', query);
     }
     if (region) {
-        url.searchParams.append('region', region);
+        searchParams.append('region', region);
     }
 
-    const response = await fetch(url.toString());
+    const queryString = searchParams.toString();
+    const url = `${API_URL}/items${queryString ? `?${queryString}` : ''}`;
+
+    const response = await fetch(url);
     if (!response.ok) {
-        throw new Error('Failed to fetch items');
+        throw new Error(`Failed to fetch items: ${response.status} ${response.statusText}`);
     }
-    return response.json();
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+        console.error('Expected array of items but got:', data);
+        throw new Error('Failed to fetch items: Invalid data format received from server');
+    }
+    return data;
 }
 
 export async function fetchItem(id: string): Promise<Item> {
-    const response = await fetch(`${API_URL}/items/${id}`);
+    const url = `${API_URL}/items/${id}`;
+    const response = await fetch(url);
     if (!response.ok) {
-        throw new Error('Failed to fetch item');
+        throw new Error(`Failed to fetch item ${id}: ${response.status} ${response.statusText}`);
     }
     return response.json();
 }

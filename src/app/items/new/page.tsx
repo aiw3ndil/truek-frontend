@@ -14,7 +14,7 @@ function CreateItemPage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     // Use stable IDs for keys to prevent input recreation and loss of focus/file
-    const [imageFields, setImageFields] = useState<{ id: number; file: File | null }[]>([{ id: Date.now(), file: null }]);
+    const [imageFields, setImageFields] = useState<{ id: number; file: File | null }[]>(() => [{ id: Date.now(), file: null }]);
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
