@@ -16,6 +16,13 @@ function ProfilePage() {
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Change password state
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordMessage, setPasswordMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+
   useEffect(() => {
     if (auth && auth.user) {
       setName(auth.user.name || auth.user.username || '');
@@ -50,6 +57,33 @@ function ProfilePage() {
       setMessage({ type: 'error', text: err.message || 'Failed to update profile' });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasswordMessage(null);
+
+    if (!auth || !auth.changePassword) return;
+
+    if (newPassword !== confirmPassword) {
+      setPasswordMessage({ type: 'error', text: t.profile?.passwords_do_not_match || 'Passwords do not match' });
+      return;
+    }
+
+    setIsChangingPassword(true);
+
+    try {
+      await auth.changePassword(currentPassword, newPassword, confirmPassword);
+      setPasswordMessage({ type: 'success', text: t.profile?.password_change_success || 'Password changed successfully!' });
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch (error) {
+      const err = error as Error;
+      setPasswordMessage({ type: 'error', text: err.message || 'Failed to change password' });
+    } finally {
+      setIsChangingPassword(false);
     }
   };
 
@@ -160,6 +194,67 @@ function ProfilePage() {
                     <div className="cell text-center" style={{ marginTop: '2rem' }}>
                       <button type="submit" className="oasis-button" disabled={isLoading}>
                         {isLoading ? (t.profile?.saving || "Updating...") : (t.profile?.save_button || "Update Profile")}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <hr style={{ margin: '2.5rem 0', borderTop: '2px dashed var(--color-sand)' }} />
+
+                <h3 className="text-center mb-2" style={{ color: 'var(--color-clay)', marginBottom: '1.5rem' }}>
+                  {t.profile?.change_password_title || "Change Password"}
+                </h3>
+
+                {passwordMessage && (
+                  <div className={`callout ${passwordMessage.type === 'success' ? 'success' : 'alert'}`} style={{ borderRadius: '12px', border: 'none', background: passwordMessage.type === 'success' ? 'rgba(72, 192, 178, 0.2)' : 'rgba(188, 108, 37, 0.2)', color: 'var(--color-clay)' }}>
+                    {passwordMessage.text}
+                  </div>
+                )}
+
+                <form onSubmit={handlePasswordSubmit}>
+                  <div className="grid-y grid-margin-y">
+                    <div className="cell">
+                      <label style={{ color: 'var(--color-clay)', fontWeight: '600' }}>
+                        {t.profile?.current_password_label || "Current Password"}
+                        <input
+                          type="password"
+                          value={currentPassword}
+                          onChange={(e) => setCurrentPassword(e.target.value)}
+                          className="search-input"
+                          style={{ marginTop: '0.5rem' }}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="cell">
+                      <label style={{ color: 'var(--color-clay)', fontWeight: '600' }}>
+                        {t.profile?.new_password_label || "New Password"}
+                        <input
+                          type="password"
+                          value={newPassword}
+                          onChange={(e) => setNewPassword(e.target.value)}
+                          className="search-input"
+                          style={{ marginTop: '0.5rem' }}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="cell">
+                      <label style={{ color: 'var(--color-clay)', fontWeight: '600' }}>
+                        {t.profile?.confirm_password_label || "Confirm New Password"}
+                        <input
+                          type="password"
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          className="search-input"
+                          style={{ marginTop: '0.5rem' }}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="cell text-center" style={{ marginTop: '2rem' }}>
+                      <button type="submit" className="oasis-button" disabled={isChangingPassword}>
+                        {isChangingPassword ? (t.profile?.saving || "Updating...") : (t.profile?.change_password_button || "Change Password")}
                       </button>
                     </div>
                   </div>

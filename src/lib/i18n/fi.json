@@ -101,11 +101,19 @@
     "language_label": "Ensisijainen kieli ilmoituksille",
     "picture_label": "Profiilikuva",
     "upload_button": "Lataa uusi kuva",
-    "save_button": "Paivita profiili",
-    "saving": "Paivitetaan...",
-    "success_message": "Profiili paivitetty onnistuneesti!",
-    "no_file_chosen": "Ei tiedostoa valittuna"
-  },
+    "save_button": "Päivitä profiili",
+    "saving": "Päivitetään...",
+    "success_message": "Profiili päivitetty onnistuneesti!",
+    "no_file_chosen": "Tiedostoa ei ole valittu",
+    "change_password_title": "Vaihda salasana",
+    "current_password_label": "Nykyinen salasana",
+    "new_password_label": "Uusi salasana",
+    "confirm_password_label": "Vahvista uusi salasana",
+    "change_password_button": "Vaihda salasana",
+    "password_change_success": "Salasana vaihdettu onnistuneesti!",
+    "passwords_do_not_match": "Salasanat eivät täsmää"
+    },
+
   "how_it_works": {
     "section_title": "Kuinka Se Toimii",
     "step1_title": "Lataa Esineesi",

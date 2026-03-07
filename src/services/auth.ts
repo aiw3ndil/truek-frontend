@@ -128,4 +128,24 @@ export async function resetPassword(token: string, password: string, passwordCon
   }
 }
 
+export async function changePassword(token: string, currentPassword: string, password: string, passwordConfirmation: string): Promise<void> {
+  const response = await fetch(`${API_URL}/users/me/change_password`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ 
+      current_password: currentPassword,
+      password, 
+      password_confirmation: passwordConfirmation 
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.errors?.join(', ') || errorData.error || `Failed to change password: ${response.status} ${response.statusText}`);
+  }
+}
+
 

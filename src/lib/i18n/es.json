@@ -103,9 +103,17 @@
     "upload_button": "Subir Nueva Foto",
     "save_button": "Actualizar Perfil",
     "saving": "Actualizando...",
-    "success_message": "Perfil actualizado con exito!",
-    "no_file_chosen": "Ningun archivo seleccionado"
-  },
+    "success_message": "¡Perfil actualizado con éxito!",
+    "no_file_chosen": "Ningún archivo seleccionado",
+    "change_password_title": "Cambiar Contraseña",
+    "current_password_label": "Contraseña Actual",
+    "new_password_label": "Nueva Contraseña",
+    "confirm_password_label": "Confirmar Nueva Contraseña",
+    "change_password_button": "Cambiar Contraseña",
+    "password_change_success": "¡Contraseña cambiada con éxito!",
+    "passwords_do_not_match": "Las contraseñas no coinciden"
+    },
+
   "how_it_works": {
     "section_title": "Como Funciona",
     "step1_title": "Sube tu Objeto",

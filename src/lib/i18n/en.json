@@ -104,7 +104,14 @@
     "save_button": "Update Profile",
     "saving": "Updating...",
     "success_message": "Profile updated successfully!",
-    "no_file_chosen": "No file chosen"
+    "no_file_chosen": "No file chosen",
+    "change_password_title": "Change Password",
+    "current_password_label": "Current Password",
+    "new_password_label": "New Password",
+    "confirm_password_label": "Confirm New Password",
+    "change_password_button": "Change Password",
+    "password_change_success": "Password changed successfully!",
+    "passwords_do_not_match": "Passwords do not match"
   },
   "how_it_works": {
     "section_title": "How It Works",

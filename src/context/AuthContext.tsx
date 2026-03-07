@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { API_URL, register as registerService, updateProfile } from '@/services/auth';
+import { API_URL, register as registerService, updateProfile, changePassword as changePasswordService } from '@/services/auth';
 
 interface User {
   id: string;
@@ -21,6 +21,7 @@ interface AuthContextType {
   register: (username: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
   isAuthenticated: () => boolean;
   updateUserProfile: (name: string, language: string, region: string, picture: File | string) => Promise<void>;
+  changePassword: (currentPassword: string, password: string, passwordConfirmation: string) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -112,12 +113,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
+  const changePassword = async (currentPassword: string, password: string, passwordConfirmation: string) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        await changePasswordService(token, currentPassword, password, passwordConfirmation);
+      } catch (error) {
+        throw error;
+      }
+    } else {
+      throw new Error('No authentication token found');
+    }
+  };
+
   const isAuthenticated = () => {
     return !!user;
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated, updateUserProfile, isLoading }}>
+    <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated, updateUserProfile, changePassword, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
