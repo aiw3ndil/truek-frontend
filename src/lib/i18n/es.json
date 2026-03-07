@@ -183,5 +183,10 @@
     "proposal_success": "¡Propuesta enviada a los vientos!",
     "no_items_to_offer": "¡No tienes objetos disponibles para ofrecer! Crea uno primero.",
     "trade_button": "Trueque"
+  },
+  "cookie_notice": {
+    "message": "Utilizamos cookies para mejorar tu experiencia en nuestro oasis.",
+    "accept": "Aceptar",
+    "privacy_policy": "Política de Privacidad"
   }
 }

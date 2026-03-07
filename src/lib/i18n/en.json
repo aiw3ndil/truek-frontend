@@ -182,5 +182,10 @@
     "proposal_success": "Proposal sent to the winds!",
     "no_items_to_offer": "You don't have any available items to offer! Create one first.",
     "trade_button": "Trade"
+  },
+  "cookie_notice": {
+    "message": "We use cookies to improve your experience on our oasis.",
+    "accept": "Accept",
+    "privacy_policy": "Privacy Policy"
   }
 }

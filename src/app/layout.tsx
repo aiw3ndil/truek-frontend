@@ -5,6 +5,7 @@ import 'foundation-sites/dist/css/foundation.min.css';
 import FoundationInit from './FoundationInit';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CookieNotice from '@/components/CookieNotice';
 import { LocaleProvider } from '@/context/LocaleContext';
 import { AuthProvider } from '@/context/AuthContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -46,6 +47,7 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
+              <CookieNotice />
               <FoundationInit />
             </GoogleOAuthProvider>
           </AuthProvider>

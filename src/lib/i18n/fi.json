@@ -183,5 +183,10 @@
     "proposal_success": "Ehdotus lahetetty tuulten mukaan!",
     "no_items_to_offer": "Sinulla ei ole tarjottavia kohteita! Luo ensin uusi kohde.",
     "trade_button": "Vaihda"
+  },
+  "cookie_notice": {
+    "message": "Käytämme evästeitä parantaaksemme kokemustasi oasisissamme.",
+    "accept": "Hyväksy",
+    "privacy_policy": "Tietosuojaseloste"
   }
 }
