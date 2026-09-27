@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
 import 'foundation-sites/dist/css/foundation.min.css';
+import './globals.css';
 import FoundationInit from './FoundationInit';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
